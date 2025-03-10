@@ -56,7 +56,6 @@ jobs:
           target: google_apis
           arch: x86_64
           profile: pixel_4
-   
           script: |
             adb devices
             timeout --preserve-status 600s adb wait-for-device  # Espera até 600 segundos (10 minutos)

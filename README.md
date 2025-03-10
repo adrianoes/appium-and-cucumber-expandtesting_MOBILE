@@ -1,6 +1,6 @@
 # appium-and-cucumber-expandtesting_UI
 
-UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting.com/notes/app/). This project contains basic examples on how to use Appium, Java and Gherkin to test UI tests. Good practices such as hooks, custom commands and tags, among others, are used. All the necessary support documentation to develop this project is placed here.
+UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting.com/notes/app/). This project contains basic examples on how to use Appium, Cucumber, Java and Gherkin to test UI tests. Good practices such as hooks, custom commands and tags, among others, are used. All the necessary support documentation to develop this project is placed here.
 
 # Pre-requirements:
 
@@ -62,6 +62,7 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
 - Open your terminal in your project directory and execute ```npx appium-doctor --android``` to run Appium Doctor and check Appium instalation status.
 - Open your terminal in your project directory and execute ```npx appium driver install uiautomator2``` to install drivers for automationName and platformName capabilities.
 - See [Appium Inspector download page](https://github.com/appium/appium-inspector/releases), download and install it. Open Virtual Device in Android Studio, drag the apiClient.apk to the screen of the virtual device and drop it. Wait for the app to be installed an open it. Whith the apiClient.apk in opened and in first plan, execute the ```adb shell dumpsys window | findstr "mCurrentFocus"``` command in the Command Prompt. It should return something like mCurrentFocus=Window{15ea642 u0 com.ab.apiclient/com.ab.apiclient.ui.MainActivity}, where com.ab.apiclient is the appium:appPackage and com.ab.apiclient.ui.MainActivity is the appium:appActivity. Also in the Command Prompt, execute the ```adb devices``` command. It should return a list of attached devices. If you have just the virtual device attached, it will return something like emulator-5554, which is exactly the appium:udid (important in case of multiple devices). In the virtual device, hit :point_right: **Settings**, :point_right: **About emulated device** and and use device name as appium:deviceName (e.g. Android SDK built for x86). In addition, "com.swaglabsmobileapp.SplashActivity is used in appium:appWaitActivity to help to prevent splashing screen errors in Appium Inspector. Your capabilities on the Appium Inspector should be, then, like:
+
   ```
   {
     "platformName": "Android",
@@ -85,6 +86,7 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
   - :white_check_mark: **Add sample code**, 
   - :white_check_mark: **Generate code with onboarding tips**. 
 Hit :point_right: **Create**. See [Selenium Java Maven Repository page](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.18.1), copy the maven dependency code. Open a dependencies tag in the pom.xml file right below the properties tag and paste the maven dependency copied code there. See [Java client for Appium Maven Repository page](https://mvnrepository.com/artifact/io.appium/java-client/9.1.0), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: Java Maven Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-java/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: Core Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-core/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: JUnit 4 Maven Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-junit/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [JUnit Jupiter API](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api/5.11.0), copy the maven dependency code and paste it in the dependency tag. See [Jackson Databind](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.15.0), copy the maven dependency code and paste it in the dependency tag. Hit :point_right: **Sync maven changes**. Your dependency tag in the pom.xml file, now, should be something like:
+
   ```
     <dependencies>
 
