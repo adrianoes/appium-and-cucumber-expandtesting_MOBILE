@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "adding tags. need to find better alternative than android studio virtual device."
+git commit -m "fixing doumentation."
 git push -u origin main
 
 (refresh page after api cmds)
