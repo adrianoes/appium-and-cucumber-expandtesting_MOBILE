@@ -23,7 +23,6 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
 | Cucumber JVM: Core Maven Repository      | 7.16.1         | -                                                               |
 | Cucumber JVM: JUnit 4 Maven Repository   | 7.16.1         | -                                                               |
 | Jackson Databind Maven Repository        | 2.15.0         | -                                                               |
-
 | JUnit Jupiter API                        | 5.11.0         | -                                                               |
 | Gherkin plugin for IntelliJ              | 243.22562.13   | -                                                               |
 | Cucumber for JAVA plugin for IntelliJ    | 243.22562.13   | -                                                               |
@@ -70,7 +69,7 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
     "appium:platformVersion": "10.0",
     "appium:deviceName": "Android SDK built for x86",
     "appium:automationName": "UIAutomator2",
-    "appium:app": "C:\\Users\\adria\\IdeaProjects\\appium-and-cucumber-expandtesting_UI\\apks\\apiClient.apk",
+    "appium:app": "C:\\Users\\<user_name>\\IdeaProjects\\appium-and-cucumber-expandtesting_UI\\apks\\apiClient.apk",
     "appium:adbExecTimeout": 120000,
     "appium:autoGrantPermissions": true,
     "appium:appPackage": "com.ab.apiclient",
