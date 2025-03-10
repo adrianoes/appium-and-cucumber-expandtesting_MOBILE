@@ -1,0 +1,68 @@
+Creating a project and commiting for the first time:
+
+git init
+git remote add origin git@github.com:adrianoes/appium-and-cucumber-expandtesting_UI.git
+git branch -M main
+git remote set-url origin git@github.com:adrianoes/appium-and-cucumber-expandtesting_UI.git
+git status
+git add .
+git commit -m "First commit. Basic structure was created"
+git push -u origin main
+
+
+Commiting for second time and so on:
+
+git status
+git add .
+git commit -m "adding tags. need to find better alternative than android studio virtual device."
+git push -u origin main
+
+(refresh page after api cmds)
+size limit----\-------------------------------------------------------------------------\
+commits history are placed in C:\appium-and-cucumber-expandtesting_UI\.git\logs\refs\heads
+
+
+padronizar para tab os espaços entre argumentos
+trocar de xpath para outros seletores
+apertar o back key 2x rapido sai do anuncio. tentar desenvolver um código que faça isso caso o anuncio aparecer
+ou então localizar as coordenadas do ponto de x do anuncio e criar um if caso o localizador não apreceça para clicar lá e fechar o anuncio
+pesquisar como descobrir o id do anucio que aparece pra poder fechar ele
+
+desired_caps = {
+    "platformName": "Android",  # ou iOS
+    "automationName": "UiAutomator2",
+    "deviceName": "emulator-5554",
+    "app": "/path/to/your/app.apk",
+    "autoDismissAlerts": True  # Fecha alertas automaticamente
+}
+
+
+sugestão para fechar anucios
+
+*** Keywords ***
+Fechar Anuncio Se Presente
+    ${existe}=    Run Keyword And Return Status    Wait Until Element Is Visible    xpath=//button[@text='X']    timeout=3
+    Run Keyword If    ${existe}    Click Element    xpath=//button[@text='X']
+
+
+
+
+se elemento está visivel
+android=new UiSelector().text("Learn More")
+xpath=//android.widget.TextView[@text="Learn More"]
+
+class=android.widget.Button
+android=new UiSelector().className("android.widget.Button")
+xpath=//android.widget.Button
+x 1017
+y 237
+
+new UiSelector().text("Close")
+//android.widget.TextView[@text="Close"]
+x 237
+y 1867
+
+xpath=//android.widget.ImageButton
+implementar antes desse aqui também, geralmente quando finaliza o teste e volta pra tela mãe, para new request
+
+implementar lógica dos anuncios para esses dois tipos de anuncios antes de raw, request e image buton
