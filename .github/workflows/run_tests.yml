@@ -33,9 +33,9 @@ jobs:
         run: |
           appium driver install uiautomator2
 
-      - name: Start up Appium
+      - name: Start Appium Server
         run: |
-          nohup appium -p 4723 -pa /wd/hub &
+          appium -p 4723 -pa /wd/hub & disown
 
       - name: Install Android SDK system image
         run: |
@@ -51,12 +51,11 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      # Aguardar o emulador iniciar completamente
       - name: Wait for Emulator to Start
         run: |
-          sleep 60 # Aguarda 60 segundos para garantir que o emulador foi iniciado
+          adb wait-for-device
+          sleep 90 # Garante que o emulador está pronto
 
-      # Executar o emulador com o script correto, sem a flag inválida
       - name: Run Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -66,12 +65,26 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-            mvn clean install -DAPPIUM_PORT=4723
 
-      # Ajuste no tempo de espera antes de matar o emulador
-      - name: Set environment variable for emulator kill delay
+      - name: Check if Appium is Running
         run: |
-          echo "ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL=60" >> $GITHUB_ENV
+          sleep 10
+          curl http://127.0.0.1:4723/wd/hub/status || echo "Appium is not responding!"
+
+      - name: Ensure Emulator is Detected
+        run: |
+          adb devices
+
+      - name: Check APK file
+        run: |
+          if [ ! -f "apks/apiClient.apk" ]; then
+            echo "APK not found!"
+            exit 1
+          fi
+
+      - name: Run Tests
+        run: |
+          mvn clean install -DAPPIUM_PORT=4723 -Dapk.path="apks/apiClient.apk"
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
