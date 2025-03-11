@@ -51,11 +51,12 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      # Adicionando espera para o emulador iniciar completamente
+      # Aguardar o emulador iniciar completamente
       - name: Wait for Emulator to Start
         run: |
           sleep 60 # Aguarda 60 segundos para garantir que o emulador foi iniciado
 
+      # Executar o emulador com o script correto, sem a flag inválida
       - name: Run Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
@@ -66,10 +67,8 @@ jobs:
           script: |
             avdmanager list device
             mvn clean install -DAPPIUM_PORT=4723 .
-        # Adicionando a flag para não matar automaticamente o emulador após o teste
-        avd-runner-options: '--no-kill'
 
-      # Adicionando a variável de ambiente para aumentar o tempo de espera antes de matar o emulador
+      # Ajuste no tempo de espera antes de matar o emulador
       - name: Set environment variable for emulator kill delay
         run: |
           echo "ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL=60" >> $GITHUB_ENV
