@@ -23,6 +23,7 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
 | Cucumber JVM: Core Maven Repository      | 7.16.1         | -                                                               |
 | Cucumber JVM: JUnit 4 Maven Repository   | 7.16.1         | -                                                               |
 | Jackson Databind Maven Repository        | 2.15.0         | -                                                               |
+| Java Faker Maven Repository              | 1.0.2          | -                                                               |
 | JUnit Jupiter API                        | 5.11.0         | -                                                               |
 | Gherkin plugin for IntelliJ              | 243.22562.13   | -                                                               |
 | Cucumber for JAVA plugin for IntelliJ    | 243.22562.13   | -                                                               |
@@ -85,7 +86,7 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
 - Open IntelliJ IDEA, hit :point_right: **New Project**, hit :point_right: **Java** in New Project frame, hit :point_right: **Maven** as Build system option and check the checkboxes below: 
   - :white_check_mark: **Add sample code**, 
   - :white_check_mark: **Generate code with onboarding tips**. 
-Hit :point_right: **Create**. See [Selenium Java Maven Repository page](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.18.1), copy the maven dependency code. Open a dependencies tag in the pom.xml file right below the properties tag and paste the maven dependency copied code there. See [Java client for Appium Maven Repository page](https://mvnrepository.com/artifact/io.appium/java-client/9.1.0), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: Java Maven Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-java/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: Core Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-core/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: JUnit 4 Maven Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-junit/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [JUnit Jupiter API](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api/5.11.0), copy the maven dependency code and paste it in the dependency tag. See [Jackson Databind](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.15.0), copy the maven dependency code and paste it in the dependency tag. Hit :point_right: **Sync maven changes**. Your dependency tag in the pom.xml file, now, should be something like:
+Hit :point_right: **Create**. See [Selenium Java Maven Repository page](https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java/4.18.1), copy the maven dependency code. Open a dependencies tag in the pom.xml file right below the properties tag and paste the maven dependency copied code there. See [Java client for Appium Maven Repository page](https://mvnrepository.com/artifact/io.appium/java-client/9.1.0), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: Java Maven Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-java/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: Core Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-core/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [Cucumber JVM: JUnit 4 Maven Repository page](https://mvnrepository.com/artifact/io.cucumber/cucumber-junit/7.16.1), copy the maven dependency code and paste it in the dependency tag. See [JUnit Jupiter API](https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api/5.11.0), copy the maven dependency code and paste it in the dependency tag. See [Jackson Databind](https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind/2.15.0), copy the maven dependency code and paste it in the dependency tag. Hit :point_right: **Sync maven changes**. See [Java Faker](https://mvnrepository.com/artifact/com.github.javafaker/javafaker/1.0.2), copy the maven dependency code and paste it in the dependency tag. See [JSON In Java](https://mvnrepository.com/artifact/org.json/json/20210307), copy the maven dependency code and paste it in the dependency tag. Hit :point_right: **Sync maven changes**. Your dependency tag in the pom.xml file, now, should be something like:
 
   ```
     <dependencies>
@@ -139,6 +140,20 @@ Hit :point_right: **Create**. See [Selenium Java Maven Repository page](https://
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.15.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
         </dependency>
 
     </dependencies>

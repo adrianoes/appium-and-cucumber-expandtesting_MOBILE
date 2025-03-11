@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "fixing doumentation."
+git commit -m "health and create tests done. miss login and delete, read logic, other tests, negative tests, hooks and functions."
 git push -u origin main
 
 (refresh page after api cmds)

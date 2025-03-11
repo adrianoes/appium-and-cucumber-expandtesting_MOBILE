@@ -18,32 +18,27 @@ import java.time.Duration;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-public class HealthSteps {
-    static AppiumDriver driver;
+public class HealthSteps extends SupportSteps {
 
-    @Given("User opens the app")
+
     public void user_opens_the_app() {
-        DesiredCapabilities cap = new DesiredCapabilities();
-        try {
-            cap.setCapability("platformName", "Android");
-            cap.setCapability("deviceName", "Pixel_4_API_29");
-            cap.setCapability("platformVersion", "10.0");
-            cap.setCapability("automationName", "UIAutomator2");
-            cap.setCapability("app", "./apks/apiClient.apk");
-            cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
-            cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
-            cap.setCapability("autoGrantPermissions", true);
+        super.user_opens_the_app();
+    }
 
-            URL url = URI.create("http://127.0.0.1:4723").toURL();
-            driver = new AppiumDriver(url, cap);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to open the app", e);
-        }
+    public void user_configures_the_app() {
+        super.user_configures_the_app();
     }
 
     @When("User fills the API health check parameters")
     public void user_fills_api_health_check_parameters() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        System.out.println("Driver status in HealthSteps: " + driver);
+//
+//        if (driver == null) {
+//            throw new RuntimeException("Driver is NULL in HealthSteps!");
+//        }
+
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Disable WiFi
         try {
@@ -55,6 +50,7 @@ public class HealthSteps {
 
         // Input base URL and endpoint
         WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etUrl']")));
+        urlField.click();
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/health-check");
 
         // Click Send Request button
@@ -64,7 +60,7 @@ public class HealthSteps {
 
     @Then("App shows API good health message")
     public void app_shows_api_good_health_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         WebElement rawButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
