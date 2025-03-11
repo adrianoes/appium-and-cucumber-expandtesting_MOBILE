@@ -66,7 +66,7 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-            mvn clean install -DAPPIUM_PORT=4723 .
+            mvn clean install -DAPPIUM_PORT=4723
 
       # Ajuste no tempo de espera antes de matar o emulador
       - name: Set environment variable for emulator kill delay
