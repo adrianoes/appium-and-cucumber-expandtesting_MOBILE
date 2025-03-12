@@ -51,13 +51,6 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Wait for Emulator to Start
-        run: |
-          adb devices
-          adb wait-for-device
-          sleep 180 # Dormir por 3 minutos para garantir que o emulador tenha tempo suficiente
-          adb devices # Verificar se o emulador está listado após o tempo de espera
-
       - name: Run Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
         with:
