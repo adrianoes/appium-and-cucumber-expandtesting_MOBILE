@@ -53,8 +53,10 @@ jobs:
 
       - name: Wait for Emulator to Start
         run: |
+          adb devices
           adb wait-for-device
-          sleep 90 # Garante que o emulador está pronto
+          sleep 180 # Dormir por 3 minutos para garantir que o emulador tenha tempo suficiente
+          adb devices # Verificar se o emulador está listado após o tempo de espera
 
       - name: Run Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
