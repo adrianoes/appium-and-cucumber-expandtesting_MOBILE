@@ -60,7 +60,7 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-            mvn test 
+            mvn test -v APPIUM_PORT:4723 .
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
