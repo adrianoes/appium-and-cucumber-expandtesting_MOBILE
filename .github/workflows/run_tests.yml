@@ -37,13 +37,7 @@ jobs:
         run: |
           nohup appium -p 4723 -pa /wd/hub &         
 
-      - name: Install Android SDK system image
-        run: |
-          sdkmanager --install "system-images;android-29;google_apis;x86_64"
 
-      - name: Create Device
-        run: |
-          echo no | avdmanager create avd -n "Pixel_4_API_29" -k "system-images;android-29;google_apis;x86_64" -d pixel_4
 
       - name: Enable KVM group perms
         run: |
@@ -56,6 +50,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+
+      - name: Install Android SDK system image
+        run: |
+          sdkmanager --install "system-images;android-29;google_apis;x86_64"
+  
+      - name: Create Device
+        run: |
+          echo no | avdmanager create avd -n "Pixel_4_API_29" -k "system-images;android-29;google_apis;x86_64" -d pixel_4
 
       - name: Run Android Emulator
         uses: reactivecircus/android-emulator-runner@v2
