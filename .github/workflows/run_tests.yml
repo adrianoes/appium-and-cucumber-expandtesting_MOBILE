@@ -60,26 +60,7 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-
-      - name: Check if Appium is Running
-        run: |
-          sleep 10
-          curl http://127.0.0.1:4723/wd/hub/status || echo "Appium is not responding!"
-
-      - name: Ensure Emulator is Detected
-        run: |
-          adb devices
-
-      - name: Check APK file
-        run: |
-          if [ ! -f "apks/apiClient.apk" ]; then
-            echo "APK not found!"
-            exit 1
-          fi
-
-      - name: Run Tests
-        run: |
-          mvn clean install -DAPPIUM_PORT=4723 -Dapk.path="apks/apiClient.apk"
+            mvn clean install 
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
