@@ -60,7 +60,7 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-            mvn clean install 
+            mvn test 
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
