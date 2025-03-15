@@ -35,9 +35,7 @@ jobs:
 
       - name: Start Appium Server
         run: |
-          nohup appium -p 4723 -pa /wd/hub --log-level info --log nohuplog.log &
-          tail -f nohuplog.log
-        
+          nohup appium -p 4723 -pa /wd/hub &         
 
       - name: Install Android SDK system image
         run: |
