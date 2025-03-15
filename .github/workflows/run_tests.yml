@@ -11,12 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Python 3.9
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.9
-          cache: 'pip'
-
       - name: Set up Java 17 for SDK Manager
         uses: actions/setup-java@v3
         with:
