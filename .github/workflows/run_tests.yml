@@ -35,7 +35,7 @@ jobs:
 
       - name: Start Appium Server
         run: |
-          appium -p 4723 -pa /wd/hub & disown
+          appium -p 4723 -pa /wd/hub
 
       - name: Install Android SDK system image
         run: |
@@ -60,7 +60,22 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-            mvn clean test -DAPPIUM_PORT=4723
+            adb wait-for-device
+            adb shell input keyevent 82
+
+      - name: Install APK on Emulator
+        run: |
+          # Instalar o APK no emulador Android
+          adb install ./apks/apiClient.apk
+          
+      - name: Verify APK Installation
+        run: |
+          # Verificar se o aplicativo foi instalado com sucesso
+          adb shell pm list packages | grep com.ab.apiclient
+
+      - name: Run Tests
+        run: |
+          mvn clean test -DAPPIUM_PORT=4723
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
