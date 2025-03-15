@@ -27,7 +27,7 @@ public class SupportSteps {
                 cap.setCapability("deviceName", "Pixel_4_API_29");
                 cap.setCapability("platformVersion", "10.0");
                 cap.setCapability("automationName", "UIAutomator2");
-                cap.setCapability("app", "apks/apiClient.apk");
+                cap.setCapability("app", "./apks/apiClient.apk");
                 cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
                 cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
                 cap.setCapability("autoGrantPermissions", true);
