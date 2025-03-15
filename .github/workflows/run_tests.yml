@@ -11,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Use Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+          cache: 'pip'
+
       - name: Set up Java 17 for SDK Manager
         uses: actions/setup-java@v3
         with:
@@ -23,7 +29,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: 'lts/*'
 
       - name: Install Appium
         run: |
@@ -35,7 +41,7 @@ jobs:
 
       - name: Start Appium Server
         run: |
-          appium -p 4723 -pa /wd/hub
+          nohup appium -p 4723 -pa /wd/hub &
 
       - name: Install Android SDK system image
         run: |
@@ -60,22 +66,10 @@ jobs:
           profile: pixel_4
           script: |
             avdmanager list device
-            adb wait-for-device
-            adb shell input keyevent 82
-
-      - name: Install APK on Emulator
-        run: |
-          # Instalar o APK no emulador Android
-          adb install ./apks/apiClient.apk
-          
-      - name: Verify APK Installation
-        run: |
-          # Verificar se o aplicativo foi instalado com sucesso
-          adb shell pm list packages | grep com.ab.apiclient
-
-      - name: Run Tests
-        run: |
-          mvn clean test -DAPPIUM_PORT=4723
+            adb install ./apks/apiClient.apk
+            adb shell pm list packages | grep com.ab.apiclient
+            adb shell am start -n com.ab.apiclient/com.ab.apiclient.ui.Splash
+            mvn clean test -DAPPIUM_PORT=4723      
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
