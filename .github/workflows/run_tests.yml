@@ -37,7 +37,9 @@ jobs:
         run: |
           nohup appium -p 4723 -pa /wd/hub &         
 
-
+      - name: Install Android SDK system image
+        run: |
+          sdkmanager --install "system-images;android-29;google_apis;x86_64"
 
       - name: Enable KVM group perms
         run: |
@@ -51,9 +53,7 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Install Android SDK system image
-        run: |
-          sdkmanager --install "system-images;android-29;google_apis;x86_64"
+
   
       - name: Create Device
         run: |
