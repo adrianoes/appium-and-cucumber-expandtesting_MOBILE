@@ -64,7 +64,7 @@ jobs:
             adb install ./apks/apiClient.apk
             adb shell pm list packages | grep com.ab.apiclient
             adb shell am start -n com.ab.apiclient/com.ab.apiclient.ui.Splash
-            mvn clean -B package test -X -DAPPIUM_PORT=4723 --file pom.xml      
+            mvn clean test    
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
