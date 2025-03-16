@@ -1,5 +1,7 @@
 package stepdefinitions;
 
+import com.google.common.collect.ImmutableMap;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import com.github.javafaker.Faker;
@@ -77,19 +79,13 @@ public class UsersSteps extends SupportSteps {
         // Inserir senha
         WebElement keyFieldPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etKey' and @text='Key']")));
         keyFieldPassword.sendKeys("password");
-
         WebElement valueFieldPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
-        // 1. Digitar o password
         valueFieldPassword.sendKeys(user_password);
-        // 2. Adicionar o texto adicional ao final
-        String additionalText = "11111111112222222222333333333344444444445555555555666666666677777777777";
-        valueFieldPassword.sendKeys(additionalText);
-        // 3. Remover o texto adicional, pressionando backspace
-        for (int i = 0; i < additionalText.length(); i++) {
-            valueFieldPassword.sendKeys(Keys.BACK_SPACE); // Pressiona backspace para apagar o texto adicional
-        }
-
         scrollAndClick("Add");
+
+        boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
+                ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 3.0));
+
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
         sendButton.click();

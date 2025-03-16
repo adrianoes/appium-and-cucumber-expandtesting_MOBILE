@@ -190,6 +190,7 @@ Hit :point_right: **Create**.
 - [Part 9 | No Cloud Providers Needed 🔥 | Run Android Appium Tests inside Github Runner 🔥](https://www.youtube.com/watch?v=pAMNRcJkjro&list=PL9ok7C7Yn9A-6uidd3RXZPf5EfhxkPXa_&index=9)
 - [Github Actions in Test Automation](https://www.youtube.com/playlist?list=PL9ok7C7Yn9A-6uidd3RXZPf5EfhxkPXa_)
 - [GitHub Actions at a Glance](https://blog.magicpod.com/github-actions-at-a-glance)
+- [Automate Mobile Gestures in Appium: A Detailed Guide for Developers](https://www.headspin.io/blog/automating-mobile-gestures-with-appium)
 
 # Tips:
 
