@@ -186,6 +186,10 @@ Hit :point_right: **Create**.
 - [Maven repositories](https://mvnrepository.com/)
 - [Gherkin](https://plugins.jetbrains.com/plugin/9164-gherkin)
 - [Appium Android Emulator not closing or making tests fail](https://stackoverflow.com/q/30405693)
+- [[2025]: Appium Mobile App Automation Testing: Android Emulator + BDD (Cucumber) 📱](https://www.youtube.com/watch?v=4UxJXlrFEw4)
+- [Part 9 | No Cloud Providers Needed 🔥 | Run Android Appium Tests inside Github Runner 🔥](https://www.youtube.com/watch?v=pAMNRcJkjro&list=PL9ok7C7Yn9A-6uidd3RXZPf5EfhxkPXa_&index=9)
+- [Github Actions in Test Automation](https://www.youtube.com/playlist?list=PL9ok7C7Yn9A-6uidd3RXZPf5EfhxkPXa_)
+- [GitHub Actions at a Glance](https://blog.magicpod.com/github-actions-at-a-glance)
 
 # Tips:
 
