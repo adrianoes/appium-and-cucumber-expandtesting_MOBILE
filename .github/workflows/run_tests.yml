@@ -16,6 +16,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: maven
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
@@ -63,7 +64,7 @@ jobs:
             adb install ./apks/apiClient.apk
             adb shell pm list packages | grep com.ab.apiclient
             adb shell am start -n com.ab.apiclient/com.ab.apiclient.ui.Splash
-            mvn clean test -X -DAPPIUM_PORT=4723       
+            mvn clean -B package test -X -DAPPIUM_PORT=4723 --file pom.xml      
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
@@ -73,3 +74,8 @@ jobs:
           path: |
             target/surefire-reports/
             target/cucumber-reports/
+
+
+
+
+            # procurar saber versões de dependencias mais recentes e compativéis entre si e com o java 17
