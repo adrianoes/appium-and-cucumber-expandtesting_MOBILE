@@ -14,7 +14,7 @@ jobs:
       - name: Set up Java 17 for SDK Manager
         uses: actions/setup-java@v4
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '17'
           cache: maven
 
@@ -24,19 +24,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: '22.11'
 
       - name: Install Appium
         run: |
-          npm install -g appium
+          npm install -g appium@2.16.2
 
       - name: Install UiAutomator2
         run: |
-          appium driver install uiautomator2
+          appium driver install uiautomator2@4.1.0
 
       - name: Start Appium Server
         run: |
-          nohup appium -p 4723 -pa /wd/hub &         
+          nohup appium &         
 
       - name: Install Android SDK system image
         run: |
@@ -78,4 +78,4 @@ jobs:
 
 
 
-            # procurar saber versões de dependencias mais recentes e compativéis entre si e com o java 17
+           

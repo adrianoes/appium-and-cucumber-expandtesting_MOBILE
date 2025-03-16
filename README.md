@@ -17,8 +17,8 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
 | SDK Plataform Tools                      | 35.0.2         | -                                                               |
 | Android Studio                           | 2024.2.1.11    | -                                                               |
 | ApiClient apk                            | 2.4.7          | -                                                               |
-| Selenium Java maven dependency           | 4.28.1         | -                                                               |
-| Java client for Appium maven dependency  | 9.3.0          | -                                                               |
+| Selenium Java maven dependency           | 4.18.1         | -                                                               |
+| Java client for Appium maven dependency  | 9.1.0          | -                                                               |
 | Cucumber JVM: Java Maven Repository      | 7.16.1         | -                                                               |
 | Cucumber JVM: Core Maven Repository      | 7.16.1         | -                                                               |
 | Cucumber JVM: JUnit 4 Maven Repository   | 7.16.1         | -                                                               |
