@@ -54,8 +54,9 @@ public class UsersSteps extends SupportSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/register");
 
         // Adicionar cabeçalhos
-        addAcceptHeader();
-        addContentTypeHeader();
+//        addAcceptHeader();
+//        addContentTypeHeader();
+        addContentTypeHeaderFirst();
 
         // Selecionar formato do corpo da requisição
         WebElement formUrlEncodeButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/rbFormUrlEncode")));
@@ -78,6 +79,8 @@ public class UsersSteps extends SupportSteps {
         valueFieldEmail.sendKeys(user_email);
 //        addButton.click();
         scrollAndClickById("com.ab.apiclient:id/btnAdd");
+
+        scrollDown(driver);
 
         // Inserir senha
         WebElement keyFieldPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etKey' and @text='Key']")));
@@ -170,6 +173,20 @@ public class UsersSteps extends SupportSteps {
         WebElement iconDownVal = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView[@resource-id='com.ab.apiclient:id/iconDownVal']")));
         iconDownVal.click();
         WebElement applicationXmlTextView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.TextView[@resource-id='android:id/text1' and @text='application/xml']")));
+        applicationXmlTextView.click();
+    }
+
+    private void addContentTypeHeaderFirst() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        imageView.click();
+        WebElement iconDown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView[@resource-id='com.ab.apiclient:id/iconDown']")));
+        iconDown.click();
+        WebElement acceptTextView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.TextView[@resource-id='android:id/text1' and @text='Content-Type']")));
+        acceptTextView.click();
+        WebElement iconDownVal = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView[@resource-id='com.ab.apiclient:id/iconDownVal']")));
+        iconDownVal.click();
+        WebElement applicationXmlTextView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.TextView[@resource-id='android:id/text1' and @text='application/x-www-form-urlencoded']")));
         applicationXmlTextView.click();
     }
 
