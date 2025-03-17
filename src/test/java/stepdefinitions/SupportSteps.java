@@ -68,12 +68,12 @@ public class SupportSteps {
         timeoutWriteField.sendKeys("120");
 
         // Fechar configurações
-        WebElement backButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        backButton.click();
+        menuButton.click();
 
         // Criar nova requisição
         WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
         newRequestButton.click();
 
     }
+
 }

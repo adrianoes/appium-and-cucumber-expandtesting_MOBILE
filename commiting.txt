@@ -14,60 +14,18 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "changing filling approach to raw code"
+git commit -m "login and delete steps done"
 git push -u origin main 
 
-need to fix report, converting it to html or catching the right html report in target folder, close the app between tests and check if it is better to miss input one header or register basic url so screen will not become to long
-
-ou passar como raw
-name=test5555&email=test6346677%40666.com&password=12345666
+need to fix report, converting it to html or catching the right html report in target folder, close the app between tests 
 
 (refresh page after api cmds)
 size limit----\-------------------------------------------------------------------------\
 commits history are placed in C:\appium-and-cucumber-expandtesting_UI\.git\logs\refs\heads
 
 
-padronizar para tab os espaços entre argumentos
-trocar de xpath para outros seletores
-apertar o back key 2x rapido sai do anuncio. tentar desenvolver um código que faça isso caso o anuncio aparecer
-ou então localizar as coordenadas do ponto de x do anuncio e criar um if caso o localizador não apreceça para clicar lá e fechar o anuncio
-pesquisar como descobrir o id do anucio que aparece pra poder fechar ele
+precisa definir o numero aleatorio antes, para que as funções possam fazer uso dele sem colocar a lógica do paralelismo em risco
+precisa ser definido um número n inicio de cada scenario (teste)
+consertar o arquivo de relatorio
+fechar o apk depois de cada teste
 
-desired_caps = {
-    "platformName": "Android",  # ou iOS
-    "automationName": "UiAutomator2",
-    "deviceName": "emulator-5554",
-    "app": "/path/to/your/app.apk",
-    "autoDismissAlerts": True  # Fecha alertas automaticamente
-}
-
-
-sugestão para fechar anucios
-
-*** Keywords ***
-Fechar Anuncio Se Presente
-    ${existe}=    Run Keyword And Return Status    Wait Until Element Is Visible    xpath=//button[@text='X']    timeout=3
-    Run Keyword If    ${existe}    Click Element    xpath=//button[@text='X']
-
-
-
-
-se elemento está visivel
-android=new UiSelector().text("Learn More")
-xpath=//android.widget.TextView[@text="Learn More"]
-
-class=android.widget.Button
-android=new UiSelector().className("android.widget.Button")
-xpath=//android.widget.Button
-x 1017
-y 237
-
-new UiSelector().text("Close")
-//android.widget.TextView[@text="Close"]
-x 237
-y 1867
-
-xpath=//android.widget.ImageButton
-implementar antes desse aqui também, geralmente quando finaliza o teste e volta pra tela mãe, para new request
-
-implementar lógica dos anuncios para esses dois tipos de anuncios antes de raw, request e image buton

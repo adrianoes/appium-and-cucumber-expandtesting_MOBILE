@@ -25,6 +25,7 @@ public class UsersSteps extends SupportSteps {
     private String user_email;
     private String user_password;
     private String user_id;
+    private String user_token;
 
     public void user_opens_the_app() {
         super.user_opens_the_app();
@@ -34,8 +35,8 @@ public class UsersSteps extends SupportSteps {
         super.user_configures_the_app();
     }
 
-    @When("User creates a new account with name {string}, email {string} and password {string}")
-    public void user_creates_a_new_account_with_name_email_and_password(String name, String email, String password) {
+    @When("User sends request to create user")
+    public void user_sends_request_to_create_user() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
@@ -56,6 +57,7 @@ public class UsersSteps extends SupportSteps {
         // Adicionar cabeçalho
         addContentTypeHeader();
 
+        //fill form in raw code
         WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
         jsonDataField.click();
         String formData = "name=" + user_name + "&email=" + user_email + "&password=" + user_password;
@@ -68,8 +70,8 @@ public class UsersSteps extends SupportSteps {
         rawButton.click();
     }
 
-    @Then("User should see a success message {string}")
-    public void user_should_see_a_success_message(String expectedMessage) {
+    @Then("User should see created user message")
+    public void user_should_see_created_user_message() throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Aguardando e pegando o texto da resposta da API
@@ -96,38 +98,137 @@ public class UsersSteps extends SupportSteps {
         assertEquals("User name should be correct", user_name, returnedName);
         assertEquals("User email should be correct", user_email, returnedEmail);
 
-        // Salvar dados no arquivo JSON
-        saveUserData();
+//        // Salvar dados no arquivo JSON
+//        Faker faker = new Faker();
+//        String randomDigits = faker.number().digits(16); // Gera um número aleatório com 16 dígitos
+//        String fileName = "test-" + randomDigits + ".json"; // Nome do arquivo com o padrão "test-xxxxx.json"
+//
+//        JSONObject userData = new JSONObject();
+//        userData.put("user_name", user_name);
+//        userData.put("user_email", user_email);
+//        userData.put("user_password", user_password);
+//        userData.put("user_id", user_id);
+//
+//        // Caminho do arquivo com o nome gerado
+//        String filePath = Paths.get("src", "test", "fixtures", fileName).toAbsolutePath().toString();
+//
+//        // Criar arquivo e escrever os dados
+//        File file = new File(filePath);
+//        FileWriter fileWriter = new FileWriter(file);
+//        fileWriter.write(userData.toString(4)); // Formatação bonita
+//        fileWriter.close();
     }
 
-    private void saveUserData() {
-        try {
-            // Geração do nome do arquivo com número aleatório de 16 dígitos
-            Faker faker = new Faker();
-            String randomDigits = faker.number().digits(16); // Gera um número aleatório com 16 dígitos
-            String fileName = "test-" + randomDigits + ".json"; // Nome do arquivo com o padrão "test-xxxxx.json"
+    @When("User sends request to login user")
+    public void user_sends_request_to_login_user() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-            JSONObject userData = new JSONObject();
-            userData.put("user_name", user_name);
-            userData.put("user_email", user_email);
-            userData.put("user_password", user_password);
-            userData.put("user_id", user_id);
+        newRequest();
 
-            // Caminho do arquivo com o nome gerado
-            String filePath = Paths.get("src", "test", "fixtures", fileName).toAbsolutePath().toString();
+        // Selecionar POST
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        httpMethodDropdown.click();
+        WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
+        postOption.click();
 
-            // Criar arquivo e escrever os dados
-            File file = new File(filePath);
-            FileWriter fileWriter = new FileWriter(file);
-            fileWriter.write(userData.toString(4)); // Formatação bonita
-            fileWriter.close();
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/login");
 
-            System.out.println("User data saved to: " + filePath);
+        // Adicionar cabeçalho
+        addContentTypeHeader();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        jsonDataField.click();
+        String formData = "email=" + user_email + "&password=" + user_password;
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        sendButton.click();
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        rawButton.click();
     }
+
+    @Then("User should see logged in user message")
+    public void user_should_see_logged_in_user_message() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        // Aguardando e pegando o texto da resposta da API
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        String responseText = resultTextElement.getText();
+
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
+
+        // Extraindo os valores do JSON
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
+
+        JSONObject data = responseJson.getJSONObject("data");
+        user_token = data.getString("token"); // Capturando o user_id da resposta
+        String returnedId = data.getString("id");
+        String returnedName = data.getString("name");
+        String returnedEmail = data.getString("email");
+
+        // Validando os valores
+        assertTrue("Success should be true", success);
+        assertEquals("Status should be 200", 200, status);
+        assertEquals("Message should be 'Login successful'", "Login successful", message);
+        assertEquals("User id should be correct", user_id, returnedId);
+        assertEquals("User name should be correct", user_name, returnedName);
+        assertEquals("User email should be correct", user_email, returnedEmail);
+    }
+
+    @When("User sends request to delete user")
+    public void user_sends_request_to_delete_user() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        newRequest();
+
+        // Selecionar DELETE
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        httpMethodDropdown.click();
+        WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
+        deleteOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/delete-account");
+
+        addTokenHeader();
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        sendButton.click();
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        rawButton.click();
+    }
+
+    @Then("User should see deleted user message")
+    public void user_should_see_deleted_user_message() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        // Aguardando e pegando o texto da resposta da API
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        String responseText = resultTextElement.getText();
+
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
+
+        // Extraindo os valores do JSON
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
+
+        // Validando os valores
+        assertTrue("Success should be true", success);
+        assertEquals("Status should be 200", 200, status);
+        assertEquals("Message should be 'Account successfully deleted'", "Account successfully deleted", message);
+    }
+
 
     private void addContentTypeHeader() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
@@ -143,6 +244,16 @@ public class UsersSteps extends SupportSteps {
         applicationXmlTextView.click();
     }
 
+    private void addTokenHeader() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        imageView.click();
+        WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
+        keyField.sendKeys("x-auth-token");
+        WebElement valueField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etValue\"]")));
+        valueField.sendKeys(user_token);
+    }
+
 //    public void scrollDown(WebDriver driver) {
 //        boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
 //                ImmutableMap.of(
@@ -154,5 +265,13 @@ public class UsersSteps extends SupportSteps {
 //                        "percent", 50.0
 //                ));
 //    }
+
+    public void newRequest() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
+        menuButton.click();
+        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
+        newRequestButton.click();
+    }
 
 }
