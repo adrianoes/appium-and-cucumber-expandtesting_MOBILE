@@ -14,10 +14,13 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "fixing logic of scroll function. need to fix report generating a html one. miss other tests and custom commands"
+git commit -m "changing filling approach to raw code"
 git push -u origin main 
 
-need to fix report, converting it to html or catching the right html report in target folder
+need to fix report, converting it to html or catching the right html report in target folder, close the app between tests and check if it is better to miss input one header or register basic url so screen will not become to long
+
+ou passar como raw
+name=test5555&email=test6346677%40666.com&password=12345666
 
 (refresh page after api cmds)
 size limit----\-------------------------------------------------------------------------\
