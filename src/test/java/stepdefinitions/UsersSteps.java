@@ -66,14 +66,26 @@ public class UsersSteps extends SupportSteps {
         keyFieldName.sendKeys("name");
         WebElement valueFieldName = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
         valueFieldName.sendKeys(user_name);
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/btnAdd']")));
+        WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnAdd")));
+//        addButton.click();
+
         scrollAndClick("Add");
+
+
+
+
+
+
+
+
+
 
         // Inserir email
         WebElement keyFieldEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etKey' and @text='Key']")));
         keyFieldEmail.sendKeys("email");
         WebElement valueFieldEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
         valueFieldEmail.sendKeys(user_email);
+//        addButton.click();
         scrollAndClick("Add");
 
         // Inserir senha
@@ -86,6 +98,7 @@ public class UsersSteps extends SupportSteps {
         boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
                 ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 3.0));
 
+//        addButton.click();
         scrollAndClick("Add");
 
         // Enviar requisição

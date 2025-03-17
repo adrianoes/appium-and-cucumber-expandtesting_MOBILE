@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "scroll function fixed, documentation updated. miss other tests and custom commands"
+git commit -m "fixing logic of scroll function. need to fix report generating a html one. miss other tests and custom commands"
 git push -u origin main 
 
 need to fix report, converting it to html or catching the right html report in target folder
