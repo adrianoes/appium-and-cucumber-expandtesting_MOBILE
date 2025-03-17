@@ -153,7 +153,7 @@ public class UsersSteps extends SupportSteps {
         String message = responseJson.getString("message");
 
         JSONObject data = responseJson.getJSONObject("data");
-        user_token = data.getString("token"); // Capturando o user_id da resposta
+        user_token = data.getString("token"); // Capturando o token da resposta
         String returnedId = data.getString("id");
         String returnedName = data.getString("name");
         String returnedEmail = data.getString("email");

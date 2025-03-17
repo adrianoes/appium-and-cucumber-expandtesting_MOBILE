@@ -195,4 +195,5 @@ Hit :point_right: **Create**.
 # Tips:
 
 - When needed, open pom.xml directory and execute ```mvn clean install```. It removes previous build files to ensure a clean environment, while compiles the source code and runs tests to compile the automation again. 
-- Make sure to have all same number versions for Cucumber JVM: Java, Cucumber JVM: Core and Cucumber JVM: JUnit 4 Maven repositories.                                                                  |
+- Make sure to have all same number versions for Cucumber JVM: Java, Cucumber JVM: Core and Cucumber JVM: JUnit 4 Maven repositories.     
+- If you an element in the screen, change the screen, change the screen back and access the previuos element, you will be required to define it again. Otherwise, you will receive a message telling that the element is not present in the DOM anymore.                                                               |

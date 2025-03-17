@@ -11,7 +11,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.net.URI;
 import java.net.URL;
 import java.time.Duration;
@@ -19,7 +18,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 public class HealthSteps extends SupportSteps {
-
 
     public void user_opens_the_app() {
         super.user_opens_the_app();
