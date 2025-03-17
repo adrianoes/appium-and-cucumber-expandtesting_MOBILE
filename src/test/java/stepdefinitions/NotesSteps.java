@@ -257,8 +257,8 @@ public class NotesSteps extends SupportSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
-        note_title = faker.lorem().words(3).toString();
-        note_description = faker.lorem().words(3).toString();
+        note_title = faker.rockBand().name();
+        note_description = faker.rockBand().name();
         note_category = faker.options().option("Home", "Personal", "Work");
 
         newRequest();
@@ -331,12 +331,12 @@ public class NotesSteps extends SupportSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
-        note_title_1 = faker.lorem().words(3).toString();
-        note_description_1 = faker.lorem().words(3).toString();
+        note_title_1 = faker.rockBand().name();
+        note_description_1 = faker.rockBand().name();
         note_category_1 = faker.options().option("Home", "Personal", "Work");
 
-        note_title_2 = faker.lorem().words(3).toString();
-        note_description_2 = faker.lorem().words(3).toString();
+        note_title_2 = faker.rockBand().name();
+        note_description_2 = faker.rockBand().name();
         note_category_2 = faker.options().option("Home", "Personal", "Work");
 
         newRequest();
@@ -573,8 +573,8 @@ public class NotesSteps extends SupportSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
-        note_updated_title = faker.lorem().words(3).toString();
-        note_updated_description = faker.lorem().words(3).toString();
+        note_updated_title = faker.rockBand().name();
+        note_updated_description = faker.rockBand().name();
         note_updated_category = faker.options().option("Home", "Personal", "Work");
 
         newRequest();
@@ -649,11 +649,6 @@ public class NotesSteps extends SupportSteps {
     public void user_sends_request_to_update_note_status() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-        // Gerar valores aleatórios e renomear variáveis
-        note_updated_title = faker.lorem().words(3).toString();
-        note_updated_description = faker.lorem().words(3).toString();
-        note_updated_category = faker.options().option("Home", "Personal", "Work");
-
         newRequest();
 
         // Selecionar PATCH
@@ -714,9 +709,9 @@ public class NotesSteps extends SupportSteps {
         assertEquals("Status should be 200", 200, status);
         assertEquals("Message should be 'Note successfully Updated'", "Note successfully Updated", message);
         assertEquals("Note ID should be correct", note_id, returnedNoteId);
-        assertEquals("Title should be correct", note_updated_title, returnedTitle);
-        assertEquals("Description should be correct", note_updated_description, returnedDescription);
-        assertEquals("Category should be correct", note_updated_category, returnedCategory);
+        assertEquals("Title should be correct", note_title, returnedTitle);
+        assertEquals("Description should be correct", note_description, returnedDescription);
+        assertEquals("Category should be correct", note_category, returnedCategory);
         assertEquals("Created at timestamp should be correct", note_created_at, returnedCreatedAt);
         assertEquals("User ID should be correct", user_id, returnedUserId);
         assertTrue("Completed status should be true for a updated note", returnedCompleted);

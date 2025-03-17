@@ -191,9 +191,11 @@ Hit :point_right: **Create**.
 - [Github Actions in Test Automation](https://www.youtube.com/playlist?list=PL9ok7C7Yn9A-6uidd3RXZPf5EfhxkPXa_)
 - [GitHub Actions at a Glance](https://blog.magicpod.com/github-actions-at-a-glance)
 - [Automate Mobile Gestures in Appium: A Detailed Guide for Developers](https://www.headspin.io/blog/automating-mobile-gestures-with-appium)
+- [Package com.github.javafaker](https://javadoc.io/static/com.github.javafaker/javafaker/1.0.2/com/github/javafaker/package-summary.html)
+- [ChatGPT](https://chatgpt.com/)
 
 # Tips:
 
 - When needed, open pom.xml directory and execute ```mvn clean install```. It removes previous build files to ensure a clean environment, while compiles the source code and runs tests to compile the automation again. 
 - Make sure to have all same number versions for Cucumber JVM: Java, Cucumber JVM: Core and Cucumber JVM: JUnit 4 Maven repositories.     
-- If you an element in the screen, change the screen, change the screen back and access the previuos element, you will be required to define it again. Otherwise, you will receive a message telling that the element is not present in the DOM anymore.                                                               |
+- If an element is defined and used in some screen, the screen is changed, the screen is chaged back and the previous element is required, then it is needed to define it again with another name. Otherwise, a message telling that the element is not present in the DOM anymore will be presented.
