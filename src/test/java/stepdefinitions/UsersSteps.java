@@ -2,19 +2,21 @@ package stepdefinitions;
 
 import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import com.github.javafaker.Faker;
 import io.appium.java_client.AppiumBy;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.json.JSONObject;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import java.nio.file.Paths;
@@ -66,7 +68,7 @@ public class UsersSteps extends SupportSteps {
         keyFieldName.sendKeys("name");
         WebElement valueFieldName = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
         valueFieldName.sendKeys(user_name);
-        WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnAdd")));
+//        WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnAdd")));
 //        addButton.click();
 
         scrollAndClick("Add");
@@ -96,7 +98,7 @@ public class UsersSteps extends SupportSteps {
 
 
         boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
-                ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 3.0));
+                ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 50.0));
 
 //        addButton.click();
         scrollAndClick("Add");
@@ -200,12 +202,25 @@ public class UsersSteps extends SupportSteps {
         formUrlEncodeTextView.click();
     }
 
+
+
     public void scrollAndClick(String visibleText) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Realiza o scroll até o elemento aparecer na tela
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
                         ".scrollIntoView(new UiSelector().textContains(\"" + visibleText + "\").instance(0))"
-        )).click();
+        ));
+
+        // Aguarda o elemento ser clicável antes de clicar
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
+                AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + visibleText + "\")")
+        ));
+
+        element.click();
     }
+
 
 
 
