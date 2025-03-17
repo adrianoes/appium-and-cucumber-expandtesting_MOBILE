@@ -3,20 +3,18 @@ package stepdefinitions;
 import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.JavascriptExecutor;
 import io.appium.java_client.AppiumBy;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import java.nio.file.Paths;
@@ -71,16 +69,7 @@ public class UsersSteps extends SupportSteps {
 //        WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnAdd")));
 //        addButton.click();
 
-        scrollAndClick("Add");
-
-
-
-
-
-
-
-
-
+        scrollAndClickById("com.ab.apiclient:id/btnAdd");
 
         // Inserir email
         WebElement keyFieldEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etKey' and @text='Key']")));
@@ -88,7 +77,7 @@ public class UsersSteps extends SupportSteps {
         WebElement valueFieldEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
         valueFieldEmail.sendKeys(user_email);
 //        addButton.click();
-        scrollAndClick("Add");
+        scrollAndClickById("com.ab.apiclient:id/btnAdd");
 
         // Inserir senha
         WebElement keyFieldPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etKey' and @text='Key']")));
@@ -96,12 +85,10 @@ public class UsersSteps extends SupportSteps {
         WebElement valueFieldPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
         valueFieldPassword.sendKeys(user_password);
 
-
-        boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
-                ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 50.0));
+        scrollDown(driver);
 
 //        addButton.click();
-        scrollAndClick("Add");
+        scrollAndClickById("com.ab.apiclient:id/btnAdd");
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
@@ -141,7 +128,6 @@ public class UsersSteps extends SupportSteps {
         // Salvar dados no arquivo JSON
         saveUserData();
     }
-
 
     private void saveUserData() {
         try {
@@ -202,28 +188,33 @@ public class UsersSteps extends SupportSteps {
         formUrlEncodeTextView.click();
     }
 
-
-
-    public void scrollAndClick(String visibleText) {
+    public void scrollAndClickById(String elementId) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        // Realiza o scroll até o elemento aparecer na tela
+        // Realiza o scroll até o elemento com o ID especificado aparecer na tela
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true).instance(0))" +
-                        ".scrollIntoView(new UiSelector().textContains(\"" + visibleText + "\").instance(0))"
+                        ".scrollIntoView(new UiSelector().resourceId(\"" + elementId + "\").instance(0))"
         ));
 
         // Aguarda o elemento ser clicável antes de clicar
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.androidUIAutomator("new UiSelector().textContains(\"" + visibleText + "\")")
+                AppiumBy.id(elementId)
         ));
 
         element.click();
     }
 
-
-
-
-
+    public void scrollDown(WebDriver driver) {
+        boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
+                ImmutableMap.of(
+                        "left", 100,
+                        "top", 100,
+                        "width", 200,
+                        "height", 200,
+                        "direction", "down",
+                        "percent", 50.0
+                ));
+    }
 
 }
