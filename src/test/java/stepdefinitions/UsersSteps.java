@@ -81,10 +81,12 @@ public class UsersSteps extends SupportSteps {
         keyFieldPassword.sendKeys("password");
         WebElement valueFieldPassword = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etValue' and @text='Value']")));
         valueFieldPassword.sendKeys(user_password);
-        scrollAndClick("Add");
+
 
         boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
                 ImmutableMap.of("left", 100, "top", 100, "width", 200, "height", 200, "direction", "down", "percent", 3.0));
+
+        scrollAndClick("Add");
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
