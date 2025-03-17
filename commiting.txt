@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "login and delete steps done"
+git commit -m "user basic suite done. report format changed to html. refactoring on appium driver to close it after each test. miss notes and negative tests"
 git push -u origin main 
 
 need to fix report, converting it to html or catching the right html report in target folder, close the app between tests 
@@ -24,8 +24,4 @@ size limit----\-----------------------------------------------------------------
 commits history are placed in C:\appium-and-cucumber-expandtesting_UI\.git\logs\refs\heads
 
 
-precisa definir o numero aleatorio antes, para que as funções possam fazer uso dele sem colocar a lógica do paralelismo em risco
-precisa ser definido um número n inicio de cada scenario (teste)
-consertar o arquivo de relatorio
-fechar o apk depois de cada teste
 

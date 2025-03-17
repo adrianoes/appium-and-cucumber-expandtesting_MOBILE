@@ -29,15 +29,8 @@ public class HealthSteps extends SupportSteps {
         super.user_configures_the_app();
     }
 
-    @When("User fills the API health check parameters")
-    public void user_fills_api_health_check_parameters() {
-//        System.out.println("Driver status in HealthSteps: " + driver);
-//
-//        if (driver == null) {
-//            throw new RuntimeException("Driver is NULL in HealthSteps!");
-//        }
-
-
+    @When("User sends request to check API health")
+    public void uUser_sends_request_to_check_API_health() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Disable WiFi
@@ -58,8 +51,8 @@ public class HealthSteps extends SupportSteps {
         sendButton.click();
     }
 
-    @Then("App shows API good health message")
-    public void app_shows_api_good_health_message() {
+    @Then("User should see API health message")
+    public void user_should_see_API_health_message() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         WebElement rawButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));

@@ -19,24 +19,22 @@ public class SupportSteps {
 
     @Given("User opens the app")
     public void user_opens_the_app() {
+        // Sempre cria uma nova instância do driver
+        DesiredCapabilities cap = new DesiredCapabilities();
+        try {
+            cap.setCapability("platformName", "Android");
+            cap.setCapability("deviceName", "Pixel_4_API_29");
+            cap.setCapability("platformVersion", "10.0");
+            cap.setCapability("automationName", "UIAutomator2");
+            cap.setCapability("app", "./apks/apiClient.apk");
+            cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
+            cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
+            cap.setCapability("autoGrantPermissions", true);
 
-        if (driver == null) {  // Evita reabrir o app se já estiver aberto
-            DesiredCapabilities cap = new DesiredCapabilities();
-            try {
-                cap.setCapability("platformName", "Android");
-                cap.setCapability("deviceName", "Pixel_4_API_29");
-                cap.setCapability("platformVersion", "10.0");
-                cap.setCapability("automationName", "UIAutomator2");
-                cap.setCapability("app", "./apks/apiClient.apk");
-                cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
-                cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
-                cap.setCapability("autoGrantPermissions", true);
-
-                URL url = URI.create("http://127.0.0.1:4723").toURL();
-                driver = new AppiumDriver(url, cap);
-            } catch (Exception e) {
-                throw new RuntimeException("Failed to open the app", e);
-            }
+            URL url = URI.create("http://127.0.0.1:4723").toURL();
+            driver = new AppiumDriver(url, cap);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to open the app", e);
         }
     }
 
