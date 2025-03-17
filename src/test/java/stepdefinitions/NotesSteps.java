@@ -257,8 +257,8 @@ public class NotesSteps extends SupportSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
-        note_title = faker.rockBand().name();
-        note_description = faker.rockBand().name();
+        note_title = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_description = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_category = faker.options().option("Home", "Personal", "Work");
 
         newRequest();
@@ -331,12 +331,12 @@ public class NotesSteps extends SupportSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
-        note_title_1 = faker.rockBand().name();
-        note_description_1 = faker.rockBand().name();
+        note_title_1 = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_description_1 = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_category_1 = faker.options().option("Home", "Personal", "Work");
 
-        note_title_2 = faker.rockBand().name();
-        note_description_2 = faker.rockBand().name();
+        note_title_2 = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_description_2 = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_category_2 = faker.options().option("Home", "Personal", "Work");
 
         newRequest();
@@ -573,8 +573,8 @@ public class NotesSteps extends SupportSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
         // Gerar valores aleatórios e renomear variáveis
-        note_updated_title = faker.rockBand().name();
-        note_updated_description = faker.rockBand().name();
+        note_updated_title = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_updated_description = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_updated_category = faker.options().option("Home", "Personal", "Work");
 
         newRequest();
