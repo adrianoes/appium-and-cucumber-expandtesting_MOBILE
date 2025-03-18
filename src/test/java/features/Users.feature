@@ -9,7 +9,7 @@ Feature: User Account Management
     Then User should see logged in user message
     When User sends request to delete user
     Then User should see deleted user message
-    And App is closed
+#    And App is closed
 
   Scenario: User gets user account info
     Given User opens the app
@@ -22,7 +22,7 @@ Feature: User Account Management
     Then User should see user info
     When User sends request to delete user
     Then User should see deleted user message
-    And App is closed
+#    And App is closed
 
   Scenario: User updates account info
     Given User opens the app
@@ -35,7 +35,7 @@ Feature: User Account Management
     Then User should see updated user info
     When User sends request to delete user
     Then User should see deleted user message
-    And App is closed
+#    And App is closed
 
   Scenario: User updates password
     Given User opens the app
@@ -48,7 +48,7 @@ Feature: User Account Management
     Then User password should be updated
     When User sends request to delete user
     Then User should see deleted user message
-    And App is closed
+#    And App is closed
 
   Scenario: User creates, logs in, logs out, logs in and deletes an account
     Given User opens the app
@@ -63,4 +63,4 @@ Feature: User Account Management
     Then User should see logged in user message
     When User sends request to delete user
     Then User should see deleted user message
-    And App is closed
+#    And App is closed

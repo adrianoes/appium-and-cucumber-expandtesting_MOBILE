@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "fix faker tilte and description functions. miss negative tests"
+git commit -m "removing redundant functions, filtering error messages, input closing apk after each test logic. miss negative tests"
 git push -u origin main 
 
 need to fix report, converting it to html or catching the right html report in target folder, close the app between tests 
