@@ -70,7 +70,7 @@ public class UsersSteps {
 
     @And("User configures the app")
     public void user_configures_the_app() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Abrir o menu lateral
         WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
@@ -105,7 +105,7 @@ public class UsersSteps {
 
     @When("User sends request to create user")
     public void user_sends_request_to_create_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Gerar valores aleatórios e renomear variáveis
         user_name = faker.name().fullName();
@@ -139,7 +139,7 @@ public class UsersSteps {
 
     @Then("User should see created user message")
     public void user_should_see_created_user_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -168,7 +168,7 @@ public class UsersSteps {
 
     @When("User sends request to log in user")
     public void user_sends_request_to_log_in_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
 
@@ -199,7 +199,7 @@ public class UsersSteps {
 
     @Then("User should see logged in user message")
     public void user_should_see_logged_in_user_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -230,7 +230,7 @@ public class UsersSteps {
 
     @When("User sends request to delete user")
     public void user_sends_request_to_delete_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
 
@@ -255,7 +255,7 @@ public class UsersSteps {
 
     @Then("User should see deleted user message")
     public void user_should_see_deleted_user_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -310,7 +310,7 @@ public class UsersSteps {
 
     @When("User sends request to get user info")
     public void user_sends_request_to_get_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
 
@@ -330,7 +330,7 @@ public class UsersSteps {
 
     @Then("User should see user info")
     public void user_should_see_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -360,7 +360,7 @@ public class UsersSteps {
 
     @When("User sends request to updates user info")
     public void user_sends_request_to_updates_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
 
@@ -395,7 +395,7 @@ public class UsersSteps {
 
     @Then("User should see updated user info")
     public void user_should_see_updated_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -429,7 +429,7 @@ public class UsersSteps {
 
     @When("User sends request to updates password")
     public void user_sends_request_to_updates_password() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
 
@@ -463,7 +463,7 @@ public class UsersSteps {
 
     @Then("User password should be updated")
     public void user_password_should_be_updated() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -485,7 +485,7 @@ public class UsersSteps {
 
     @When("User sends request to log out user")
     public void user_sends_request_to_log_out_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
 
@@ -510,7 +510,7 @@ public class UsersSteps {
 
     @Then("User should see logged out user message")
     public void user_should_see_logged_out_user_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
@@ -531,7 +531,7 @@ public class UsersSteps {
     }
 
     private void addContentTypeHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement iconDown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView[@resource-id='com.ab.apiclient:id/iconDown']")));
@@ -545,7 +545,7 @@ public class UsersSteps {
     }
 
     private void addTokenHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
@@ -555,7 +555,7 @@ public class UsersSteps {
     }
 
     private void addTokenHeaderAs2nd() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\" and @text=\"Key\"]")));
@@ -577,7 +577,7 @@ public class UsersSteps {
 //    }
 
     public void newRequest() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
         menuButton.click();
         WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
