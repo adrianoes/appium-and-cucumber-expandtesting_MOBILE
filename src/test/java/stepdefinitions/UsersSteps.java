@@ -46,6 +46,7 @@ public class UsersSteps {
             cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
             cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
             cap.setCapability("autoGrantPermissions", true);
+            cap.setCapability("adbExecTimeout", 120000);
 
             URL url = URI.create("http://127.0.0.1:4723").toURL();
             driver = new AppiumDriver(url, cap);
