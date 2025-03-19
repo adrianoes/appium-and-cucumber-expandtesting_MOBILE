@@ -177,6 +177,7 @@ Hit :point_right: **Create**.
 # Tests:
 
 - Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_UI) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
+- Open command prompt in the pom.xml directory and Execute ```mvn clean test -Dcucumber.filter.name="Notes info are retrieved"``` to run Notes info are retrieved test. 
 - Hit :point_right:**Testing** button on left side bar in IntelliJ and choose the tests to execute.
 
 # Support:
