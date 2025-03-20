@@ -465,8 +465,10 @@ public class NotesSteps {
         note_updated_at_1 = data.getString("updated_at"); // Capturando o timestamp de atualização
         user_id_1 = data.getString("user_id"); // Capturando o ID do usuário
 
-        menuButton.click();
-        newRequestButton.click();
+        WebElement menuButton2nd = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
+        menuButton2nd.click();
+        WebElement newRequestButton2nd = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
+        newRequestButton2nd.click();
 
         // Selecionar POST
         WebElement httpMethodDropdown2 = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
