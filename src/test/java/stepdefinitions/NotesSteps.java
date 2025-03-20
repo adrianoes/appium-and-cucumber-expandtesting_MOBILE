@@ -190,10 +190,7 @@ public class NotesSteps {
     public void user_sends_request_to_log_in_user_before_note_creation() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar POST
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -255,10 +252,7 @@ public class NotesSteps {
     public void user_sends_request_to_delete_user_after_note_creation() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar DELETE
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -343,10 +337,7 @@ public class NotesSteps {
         note_description = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_category = faker.options().option("Home", "Personal", "Work");
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar POST
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -423,10 +414,7 @@ public class NotesSteps {
         note_description_2 = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_category_2 = faker.options().option("Home", "Personal", "Work");
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar POST
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -465,10 +453,7 @@ public class NotesSteps {
         note_updated_at_1 = data.getString("updated_at"); // Capturando o timestamp de atualização
         user_id_1 = data.getString("user_id"); // Capturando o ID do usuário
 
-        WebElement menuButton2nd = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton2nd.click();
-        WebElement newRequestButton2nd = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton2nd.click();
+        newRequest();
 
         // Selecionar POST
         WebElement httpMethodDropdown2 = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -512,10 +497,7 @@ public class NotesSteps {
     public void user_sends_request_to_get_notes_info() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Inserir URL do endpoint
         WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
@@ -602,10 +584,7 @@ public class NotesSteps {
     public void user_sends_request_to_get_note_info() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Inserir URL do endpoint
         WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
@@ -671,10 +650,7 @@ public class NotesSteps {
         note_updated_description = faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_updated_category = faker.options().option("Home", "Personal", "Work");
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar PUT
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -745,10 +721,7 @@ public class NotesSteps {
     public void user_sends_request_to_update_note_status() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar PATCH
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -819,10 +792,7 @@ public class NotesSteps {
     public void user_sends_request_to_delete_note() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
+        newRequest();
 
         // Selecionar DELETE
         WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
@@ -912,13 +882,13 @@ public class NotesSteps {
 //                ));
 //    }
 
-//    public void newRequest() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-//        menuButton.click();
-//        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-//        newRequestButton.click();
-//    }
+    public void newRequest() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
+        menuButton.click();
+        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
+        newRequestButton.click();
+    }
 
 }
 
