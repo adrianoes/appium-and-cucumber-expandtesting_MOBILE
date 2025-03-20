@@ -29,28 +29,15 @@ public class HealthSteps {
         // Sempre cria uma nova instância do driver
         DesiredCapabilities cap = new DesiredCapabilities();
         try {
-            // 1. Configuração do Dispositivo (Define o ambiente do teste)
             cap.setCapability("platformName", "Android");
-            cap.setCapability("platformVersion", "10.0");
             cap.setCapability("deviceName", "Pixel_4_API_29");
-            cap.setCapability("udid", "emulator-5554");
-
-            // 2. Configuração da Automação (Define o motor e framework de automação)
+            cap.setCapability("platformVersion", "10.0");
             cap.setCapability("automationName", "UIAutomator2");
-            cap.setCapability("uiautomator2ServerInstallTimeout", 60000);
-            cap.setCapability("adbExecTimeout", 120000);
-
-            // 3. Configuração do Aplicativo (Define o app a ser testado)
             cap.setCapability("app", "./apks/apiClient.apk");
-            cap.setCapability("appPackage", "com.ab.apiclient");
             cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
             cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
-            cap.setCapability("appWaitDuration", 20000);
-
-            // 4. Configurações de Permissões e Reset (Garante que o app tenha as permissões corretas e controle de estado)
             cap.setCapability("autoGrantPermissions", true);
-            cap.setCapability("noReset", true);
-            cap.setCapability("autoDismissAlerts", true);
+            cap.setCapability("adbExecTimeout", 120000);
 
             URL url = URI.create("http://127.0.0.1:4723").toURL();
             driver = new AppiumDriver(url, cap);
