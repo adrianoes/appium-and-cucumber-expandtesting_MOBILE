@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "adding more capabilities to try to improve stability. miss negative tests"
+git commit -m "updating selectors send, raw, new request and response body to ui automator selector. adding prefix string to note name and not description to avoid bad request. miss negative tests"
 git push -u origin main 
 
 need to fix report, converting it to html or catching the right html report in target folder, close the app between tests 

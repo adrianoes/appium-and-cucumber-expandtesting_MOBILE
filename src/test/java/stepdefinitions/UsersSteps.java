@@ -138,9 +138,9 @@ public class UsersSteps {
         jsonDataField.sendKeys(formData);
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -149,7 +149,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -198,9 +198,9 @@ public class UsersSteps {
         jsonDataField.sendKeys(formData);
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -209,7 +209,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -254,9 +254,9 @@ public class UsersSteps {
         addTokenHeader();
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -265,7 +265,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -329,9 +329,9 @@ public class UsersSteps {
         addTokenHeader();
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -340,7 +340,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -394,9 +394,9 @@ public class UsersSteps {
         jsonDataField.sendKeys(formData);
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -405,7 +405,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -462,9 +462,9 @@ public class UsersSteps {
         jsonDataField.sendKeys(formData);
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -473,7 +473,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -509,9 +509,9 @@ public class UsersSteps {
         addTokenHeader();
 
         // Enviar requisição
-        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.Button[@resource-id='com.ab.apiclient:id/btnSend']")));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@content-desc='Raw']")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
     }
 
@@ -520,7 +520,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.TextView[@resource-id='com.ab.apiclient:id/tvResult']")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -587,7 +587,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
         menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
+        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
         newRequestButton.click();
     }
 
@@ -595,3 +595,7 @@ public class UsersSteps {
 
 
 
+//
+//    new UiSelector().resourceId("com.ab.apiclient:id/etJSONData")
+//    new UiSelector().className("android.widget.ImageButton")
+//    new UiSelector().text("New Request")

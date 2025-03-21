@@ -114,11 +114,11 @@ public class HealthSteps {
         }
 
         // Input base URL and endpoint
-        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath("//android.widget.EditText[@resource-id='com.ab.apiclient:id/etUrl']")));
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/etUrl\")")));
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/health-check");
 
         // Click Send Request button
-        WebElement sendButton = driver.findElement(AppiumBy.id("com.ab.apiclient:id/btnSend"));
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
     }
 
@@ -129,8 +129,8 @@ public class HealthSteps {
         WebElement rawButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
 
-        WebElement responseElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/tvResult")));
-        String responseText = responseElement.getText();
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
+        String responseText = resultTextElement.getText();
 
         // Use Jackson to parse the JSON response
         try {
