@@ -2,7 +2,7 @@ Feature: Notes Management
 
   Scenario: Note is created
     Given User opens the app before note creation
-    And User configures the app before note creation
+#    And User configures the app before note creation
     When User sends request to create user before note creation
     Then User should see created user message before note creation
     When User sends request to log in user before note creation
@@ -15,7 +15,7 @@ Feature: Notes Management
 
   Scenario: Notes info are retrieved
     Given User opens the app before note creation
-    And User configures the app before note creation
+#    And User configures the app before note creation
     When User sends request to create user before note creation
     Then User should see created user message before note creation
     When User sends request to log in user before note creation
@@ -29,7 +29,7 @@ Feature: Notes Management
 
   Scenario: Note info is retrieved
     Given User opens the app before note creation
-    And User configures the app before note creation
+#    And User configures the app before note creation
     When User sends request to create user before note creation
     Then User should see created user message before note creation
     When User sends request to log in user before note creation
@@ -44,7 +44,7 @@ Feature: Notes Management
 
   Scenario: Note is updated
     Given User opens the app before note creation
-    And User configures the app before note creation
+#    And User configures the app before note creation
     When User sends request to create user before note creation
     Then User should see created user message before note creation
     When User sends request to log in user before note creation
@@ -59,7 +59,7 @@ Feature: Notes Management
 
   Scenario: Note status is updated
     Given User opens the app before note creation
-    And User configures the app before note creation
+#    And User configures the app before note creation
     When User sends request to create user before note creation
     Then User should see created user message before note creation
     When User sends request to log in user before note creation
@@ -74,7 +74,7 @@ Feature: Notes Management
 
   Scenario: Note is deleted
     Given User opens the app before note creation
-    And User configures the app before note creation
+#    And User configures the app before note creation
     When User sends request to create user before note creation
     Then User should see created user message before note creation
     When User sends request to log in user before note creation

@@ -14,7 +14,7 @@ Commiting for second time and so on:
 
 git status
 git add .
-git commit -m "trying fix stability. miss negative tests"
+git commit -m "adding more capabilities to try to improve stability. miss negative tests"
 git push -u origin main 
 
 need to fix report, converting it to html or catching the right html report in target folder, close the app between tests 

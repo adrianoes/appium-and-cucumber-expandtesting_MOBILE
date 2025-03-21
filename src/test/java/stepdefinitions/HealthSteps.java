@@ -35,10 +35,16 @@ public class HealthSteps {
             cap.setCapability("automationName", "UIAutomator2");
             cap.setCapability("app", "./apks/apiClient.apk");
             cap.setCapability("appActivity", "com.ab.apiclient.ui.Splash");
-            cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash,com.ab.apiclient.ui.MainActivity");
+            cap.setCapability("appWaitActivity", "com.ab.apiclient.ui.Splash, com.ab.apiclient.ui.MainActivity, com.ab.apiclient.*");
             cap.setCapability("autoGrantPermissions", true);
-            cap.setCapability("autoDismissAlerts", true);
+            cap.setCapability("enforceXPath1", true);
+            cap.setCapability("appWaitDuration", 60000);
+            cap.setCapability("newCommandTimeout", 120);
             cap.setCapability("adbExecTimeout", 120000);
+
+//            cap.setCapability("autoDismissAlerts", true);
+//            cap.setCapability("noReset", true);
+//            cap.setCapability("adbExecTimeout", 120000);
 
             URL url = URI.create("http://127.0.0.1:4723").toURL();
             driver = new AppiumDriver(url, cap);
@@ -60,40 +66,40 @@ public class HealthSteps {
         }
     }
 
-    @And("User configures the app before health check")
-    public void user_configures_the_app_before_health_check() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
-        // Abrir o menu lateral
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
-        menuButton.click();
-
-        // Ir para as configurações
-        WebElement settingsButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='Settings']")));
-        settingsButton.click();
-
-        // Definir timeout da conexão
-        WebElement timeoutField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etTimeoutConnection")));
-        timeoutField.clear();
-        timeoutField.sendKeys("120");
-
-        // Definir timeout da leitura
-        WebElement timeoutReadField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etTimeoutREAD")));
-        timeoutReadField.clear();
-        timeoutReadField.sendKeys("120");
-
-        // Definir timeout da escrita
-        WebElement timeoutWriteField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etTimeoutWRITE")));
-        timeoutWriteField.clear();
-        timeoutWriteField.sendKeys("120");
-
-        // Fechar configurações
-        menuButton.click();
-
-        // Criar nova requisição
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
-        newRequestButton.click();
-    }
+//    @And("User configures the app before health check")
+//    public void user_configures_the_app_before_health_check() {
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+//
+//        // Abrir o menu lateral
+//        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
+//        menuButton.click();
+//
+//        // Ir para as configurações
+//        WebElement settingsButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='Settings']")));
+//        settingsButton.click();
+//
+//        // Definir timeout da conexão
+//        WebElement timeoutField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etTimeoutConnection")));
+//        timeoutField.clear();
+//        timeoutField.sendKeys("120");
+//
+//        // Definir timeout da leitura
+//        WebElement timeoutReadField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etTimeoutREAD")));
+//        timeoutReadField.clear();
+//        timeoutReadField.sendKeys("120");
+//
+//        // Definir timeout da escrita
+//        WebElement timeoutWriteField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etTimeoutWRITE")));
+//        timeoutWriteField.clear();
+//        timeoutWriteField.sendKeys("120");
+//
+//        // Fechar configurações
+//        menuButton.click();
+//
+//        // Criar nova requisição
+//        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='com.ab.apiclient:id/design_menu_item_text' and @text='New Request']")));
+//        newRequestButton.click();
+//    }
 
     @When("User sends request to check API health")
     public void uUser_sends_request_to_check_API_health() {

@@ -2,7 +2,7 @@ Feature: User Account Management
 
   Scenario: User creates, logs in and deletes an account
     Given User opens the app
-    And User configures the app
+#    And User configures the app
     When User sends request to create user
     Then User should see created user message
     When User sends request to log in user
@@ -13,7 +13,7 @@ Feature: User Account Management
 
   Scenario: User gets user account info
     Given User opens the app
-    And User configures the app
+#    And User configures the app
     When User sends request to create user
     Then User should see created user message
     When User sends request to log in user
@@ -26,7 +26,7 @@ Feature: User Account Management
 
   Scenario: User updates account info
     Given User opens the app
-    And User configures the app
+#    And User configures the app
     When User sends request to create user
     Then User should see created user message
     When User sends request to log in user
@@ -39,7 +39,7 @@ Feature: User Account Management
 
   Scenario: User updates password
     Given User opens the app
-    And User configures the app
+#    And User configures the app
     When User sends request to create user
     Then User should see created user message
     When User sends request to log in user
@@ -52,7 +52,7 @@ Feature: User Account Management
 
   Scenario: User creates, logs in, logs out, logs in and deletes an account
     Given User opens the app
-    And User configures the app
+#    And User configures the app
     When User sends request to create user
     Then User should see created user message
     When User sends request to log in user
