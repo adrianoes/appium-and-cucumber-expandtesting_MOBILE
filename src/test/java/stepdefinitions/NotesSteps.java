@@ -408,6 +408,120 @@ public class NotesSteps {
         assertFalse("Completed status should be false for a newly created note", returnedCompleted);
     }
 
+    @When("User sends request to create a note with invalid category")
+    public void user_sends_request_to_create_a_note_with_invalid_category() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Gerar valores aleatórios e renomear variáveis
+        note_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_category = faker.options().option("Home", "Personal", "Work");
+
+        newRequest();
+
+        // Selecionar POST
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
+        postOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes");
+
+        // Adicionar cabeçalho
+        addContentTypeHeader();
+        addTokenHeaderAs2nd();
+
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        String formData = "title=" + note_title + "&description=" + note_description + "&category=" + "a";
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @Then("User should see invalid category message")
+    public void user_should_see_invalid_category_message() throws IOException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Aguardando e pegando o texto da resposta da API
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
+        String responseText = resultTextElement.getText();
+
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
+
+        // Extraindo os valores do JSON
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
+
+        // Validando os valores
+        assertFalse("Success should be false", success);
+        assertEquals("Status should be 400", 400, status);
+        assertEquals("Message should be 'Category must be one of the categories: Home, Work, Personal'", "Category must be one of the categories: Home, Work, Personal", message);
+    }
+
+    @When("User sends request to create a note with invalid token")
+    public void user_sends_request_to_create_a_note_with_invalid_token() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Gerar valores aleatórios e renomear variáveis
+        note_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_category = faker.options().option("Home", "Personal", "Work");
+
+        newRequest();
+
+        // Selecionar POST
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
+        postOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes");
+
+        // Adicionar cabeçalho
+        addContentTypeHeader();
+        addinvalidTokenHeaderAs2nd();
+
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        String formData = "title=" + note_title + "&description=" + note_description + "&category=" + note_category;
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @Then("User should see invalid token message response")
+    public void user_should_see_invalid_token_message_response() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Aguardando e pegando o texto da resposta da API
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
+        String responseText = resultTextElement.getText();
+
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
+
+        // Extraindo os valores do JSON
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
+
+        // Validando os valores
+        assertFalse("Success should be false", success);
+        assertEquals("Status should be 401", 401, status);
+        assertEquals("Message should be 'Access token is not valid or has expired, you will need to login'", "Access token is not valid or has expired, you will need to login", message);
+    }
+
     @When("User sends request to create notes")
     public void user_sends_request_to_create_notes() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -520,6 +634,24 @@ public class NotesSteps {
         rawButton.click();
     }
 
+    @And("User sends request to get notes info with invalid token")
+    public void user_sends_request_to_get_notes_info_with_invalid_token() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes");
+
+        // Adicionar cabeçalho
+        addinvalidTokenHeader();
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
     @Then("User should see notes info message")
     public void user_should_see_notes_info_message() throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -598,7 +730,7 @@ public class NotesSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id );
 
         // Adicionar cabeçalho
-        addTokenHeaderAs2nd();
+        addTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
@@ -648,6 +780,64 @@ public class NotesSteps {
         assertFalse("Completed status should be false for a newly created note", returnedCompleted);
     }
 
+    @When("User sends request to get note info with invalid token")
+    public void user_sends_request_to_get_note_info_with_invalid_token() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id );
+
+        // Adicionar cabeçalho
+        addinvalidTokenHeader();
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @When("User sends request to get note info with invalid note id")
+    public void user_sends_request_to_get_note_info_with_invalid_note_id() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + "@"+note_id );
+
+        // Adicionar cabeçalho
+        addTokenHeader();
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @Then("User should see invalid note id message")
+    public void user_should_see_invalid_note_id_message() throws IOException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Aguardando e pegando o texto da resposta da API
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
+        String responseText = resultTextElement.getText();
+
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
+
+        // Extraindo os valores do JSON
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
+
+        // Validando os valores
+        assertFalse("Success should be false", success);
+        assertEquals("Status should be 400", 400, status);
+        assertEquals("Message should be 'Note ID must be a valid ID'", "Note ID must be a valid ID", message);
+    }
+
     @When("User sends request to update note")
     public void user_sends_request_to_update_note() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -683,6 +873,76 @@ public class NotesSteps {
         sendButton.click();
         WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
+    }
+
+    @When("User sends request to update note with invalid category")
+    public void user_sends_request_to_update_note_with_invalid_category() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Gerar valores aleatórios e renomear variáveis
+        note_updated_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_updated_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_updated_category = faker.options().option("Home", "Personal", "Work");
+
+        newRequest();
+
+        // Selecionar PUT
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement putOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PUT']")));
+        putOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id);
+
+        // Adicionar cabeçalho
+        addContentTypeHeader();
+        addTokenHeaderAs2nd();
+
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        String formData = "title=" + note_updated_title + "&description=" + note_updated_description + "&completed=true" + "&category=" + "a";
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @When("User sends request to update note with invalid token")
+    public void user_sends_request_to_update_note_with_invalid_token() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Gerar valores aleatórios e renomear variáveis
+        note_updated_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_updated_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
+        note_updated_category = faker.options().option("Home", "Personal", "Work");
+
+        newRequest();
+
+        // Selecionar PUT
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement putOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PUT']")));
+        putOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id);
+
+        // Adicionar cabeçalho
+        addContentTypeHeader();
+        addinvalidTokenHeaderAs2nd();
+
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        String formData = "title=" + note_updated_title + "&description=" + note_updated_description + "&completed=true" + "&category=" + note_updated_category;
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
     }
 
     @Then("User should see note updated message")
@@ -795,6 +1055,88 @@ public class NotesSteps {
         assertTrue("Completed status should be true for a updated note", returnedCompleted);
     }
 
+    @When("User sends request to update note status with invalid token")
+    public void user_sends_request_to_update_note_status_with_invalid_token() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Selecionar PATCH
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement patchOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PATCH']")));
+        patchOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id);
+
+        // Adicionar cabeçalho
+        addContentTypeHeader();
+        addTokenHeaderAs2nd();
+
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        String formData = "completed=a";
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @When("User sends request to update note status with invalid status")
+    public void user_sends_request_to_update_note_status_with_invalid_status() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Selecionar PATCH
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement patchOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PATCH']")));
+        patchOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id);
+
+        // Adicionar cabeçalho
+        addContentTypeHeader();
+        addTokenHeaderAs2nd();
+
+        //fill form in raw code
+        WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
+        String formData = "completed=a";
+        jsonDataField.sendKeys(formData);
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @Then("User should see note invalid status message")
+    public void user_should_see_note_invalid_status_message() throws IOException {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        // Aguardando e pegando o texto da resposta da API
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
+        String responseText = resultTextElement.getText();
+
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
+
+        // Extraindo os valores do JSON
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
+
+        // Validando os valores
+        assertFalse("Success should be false", success);
+        assertEquals("Status should be 400", 400, status);
+        assertEquals("Message should be 'Note completed status must be boolean'", "Note completed status must be boolean", message);
+    }
+
     @When("User sends request to delete note")
     public void user_sends_request_to_delete_note() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -812,13 +1154,61 @@ public class NotesSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id );
 
         // Adicionar cabeçalho
-        addTokenHeaderAs2nd();
+        addTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
         WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
+    }
+
+    @When("User sends request to delete note with invalid note id")
+    public void user_sends_request_to_delete_note_with_invalid_note_id() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Selecionar DELETE
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
+        deleteOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + "@"+note_id );
+
+        // Adicionar cabeçalho
+        addTokenHeader();
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
+    }
+
+    @When("User sends request to delete note with invalid token")
+    public void user_sends_request_to_delete_note_with_invalid_token() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+        newRequest();
+
+        // Selecionar DELETE
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        httpMethodDropdown.click();
+        WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
+        deleteOption.click();
+
+        // Inserir URL do endpoint
+        WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
+        urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + "@"+note_id );
+
+        // Adicionar cabeçalho
+        addinvalidTokenHeader();
+
+        // Enviar requisição
+        WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
+        sendButton.click();
     }
 
     @Then("User should see note deleted message")
@@ -877,7 +1267,7 @@ public class NotesSteps {
         valueField.sendKeys(user_token);
     }
 
-    private void addWrongTokenHeader() {
+    private void addinvalidTokenHeader() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
@@ -887,7 +1277,7 @@ public class NotesSteps {
         valueField.sendKeys("@"+user_token);
     }
 
-    private void addWrongTokenHeaderAs2nd() {
+    private void addinvalidTokenHeaderAs2nd() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();

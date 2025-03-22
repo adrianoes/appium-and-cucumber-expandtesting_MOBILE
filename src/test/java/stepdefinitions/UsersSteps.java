@@ -174,8 +174,8 @@ public class UsersSteps {
         assertEquals("User email should be correct", user_email, returnedEmail);
     }
 
-    @When("User sends request to create user with wrong email")
-    public void user_sends_request_to_create_user_with_wrong_email() {
+    @When("User sends request to create user with invalid email")
+    public void user_sends_request_to_create_user_with_invalid_email() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Gerar valores aleatórios e renomear variáveis
@@ -206,8 +206,8 @@ public class UsersSteps {
         sendButton.click();
     }
 
-    @Then("User should see wrong email message")
-    public void user_should_see_wrong_email_message() throws IOException {
+    @Then("User should see invalid email message")
+    public void user_should_see_invalid_email_message() throws IOException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
@@ -290,8 +290,8 @@ public class UsersSteps {
         assertEquals("User email should be correct", user_email, returnedEmail);
     }
 
-    @When("User sends request with wrong email to log in user")
-    public void user_sends_request_with_wrong_email_to_log_in_user() {
+    @When("User sends request with invalid email to log in user")
+    public void user_sends_request_with_invalid_email_to_log_in_user() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -319,8 +319,8 @@ public class UsersSteps {
         sendButton.click();
     }
 
-    @When("User sends request with wrong password to log in user")
-    public void user_sends_request_with_wrong_password_to_log_in_user() {
+    @When("User sends request with invalid password to log in user")
+    public void user_sends_request_with_invalid_password_to_log_in_user() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -348,8 +348,8 @@ public class UsersSteps {
         sendButton.click();
     }
 
-    @Then("User should see login with wrong password message")
-    public void user_should_see_login_with_wrong_password_message() {
+    @Then("User should see login with invalid password message")
+    public void user_should_see_login_with_invalid_password_message() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
@@ -500,8 +500,8 @@ public class UsersSteps {
         assertEquals("User email should be correct", user_email, returnedEmail);
     }
 
-    @When("User sends request to get user info with wrong token")
-    public void user_sends_request_to_get_user_info_with_wrong_token() {
+    @When("User sends request to get user info with invalid token")
+    public void user_sends_request_to_get_user_info_with_invalid_token() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -511,15 +511,15 @@ public class UsersSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/profile");
 
         // Adicionar cabeçalho
-        addWrongTokenHeader();
+        addinvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
     }
 
-    @Then("User should see wrong token message")
-    public void user_should_see_wrong_token_message() {
+    @Then("User should see invalid token message")
+    public void user_should_see_invalid_token_message() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
@@ -609,8 +609,8 @@ public class UsersSteps {
         assertEquals("User company should be correct", user_company, returnedCompany);
     }
 
-    @When("User sends request to updates user info with wrong username")
-    public void user_sends_request_to_updates_user_info_with_wrong_username() {
+    @When("User sends request to updates user info with invalid username")
+    public void user_sends_request_to_updates_user_info_with_invalid_username() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -642,8 +642,8 @@ public class UsersSteps {
         sendButton.click();
     }
 
-    @When("User sends request to updates user info with wrong token")
-    public void user_sends_request_to_updates_user_info_with_wrong_token() {
+    @When("User sends request to updates user info with invalid token")
+    public void user_sends_request_to_updates_user_info_with_invalid_token() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -660,7 +660,7 @@ public class UsersSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addWrongTokenHeaderAs2nd();
+        addinvalidTokenHeaderAs2nd();
 
         user_phone = faker.regexify("[0-9]{10,12}");
         user_company = faker.regexify("[A-Za-z0-9]{5,15}");
@@ -675,8 +675,8 @@ public class UsersSteps {
         sendButton.click();
     }
 
-    @Then("User should see wrong username message")
-    public void user_should_see_wrong_username_message() {
+    @Then("User should see invalid username message")
+    public void user_should_see_invalid_username_message() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
@@ -785,8 +785,8 @@ public class UsersSteps {
         sendButton.click();
     }
 
-    @When("User sends request to update password with wrong token")
-    public void user_sends_request_to_update_password_with_wrong_token() {
+    @When("User sends request to update password with invalid token")
+    public void user_sends_request_to_update_password_with_invalid_token() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -803,7 +803,7 @@ public class UsersSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addWrongTokenHeaderAs2nd();
+        addinvalidTokenHeaderAs2nd();
 
         user_new_password = faker.regexify("[A-Za-z0-9]{12,20}");
 
@@ -864,8 +864,8 @@ public class UsersSteps {
         rawButton.click();
     }
 
-    @When("User sends request to log out user with wrong token")
-    public void user_sends_request_to_log_out_user_with_wrong_token() {
+    @When("User sends request to log out user with invalid token")
+    public void user_sends_request_to_log_out_user_with_invalid_token() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         newRequest();
@@ -880,13 +880,11 @@ public class UsersSteps {
         WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/logout");
 
-        addTokenHeader();
+        addinvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
-        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
-        rawButton.click();
     }
 
     @Then("User should see logged out user message")
@@ -935,7 +933,7 @@ public class UsersSteps {
         valueField.sendKeys(user_token);
     }
 
-    private void addWrongTokenHeader() {
+    private void addinvalidTokenHeader() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
@@ -955,7 +953,7 @@ public class UsersSteps {
         valueField.sendKeys(user_token);
     }
 
-    private void addWrongTokenHeaderAs2nd() {
+    private void addinvalidTokenHeaderAs2nd() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
