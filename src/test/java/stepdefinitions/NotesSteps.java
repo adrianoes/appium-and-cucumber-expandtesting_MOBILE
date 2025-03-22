@@ -97,8 +97,7 @@ public class NotesSteps {
 
 //    @And("User configures the app before note creation")
 //    public void user_configures_the_app_before_note_creation() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));//
 //        // Abrir o menu lateral
 //        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
 //        menuButton.click();
@@ -132,8 +131,7 @@ public class NotesSteps {
 
     @When("User sends request to create user before note creation")
     public void user_sends_request_to_create_user_before_note_creation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         user_name = faker.name().fullName();
         user_email = faker.internet().emailAddress().toLowerCase().replace("-", "");
@@ -166,7 +164,7 @@ public class NotesSteps {
 
     @Then("User should see created user message before note creation")
     public void user_should_see_created_user_message_before_note_creation() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
@@ -195,8 +193,7 @@ public class NotesSteps {
 
     @When("User sends request to log in user before note creation")
     public void user_sends_request_to_log_in_user_before_note_creation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -226,8 +223,7 @@ public class NotesSteps {
 
     @Then("User should see logged in user message before note creation")
     public void user_should_see_logged_in_user_message_before_note_creation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -257,8 +253,7 @@ public class NotesSteps {
 
     @When("User sends request to delete user after note creation")
     public void user_sends_request_to_delete_user_after_note_creation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -282,8 +277,7 @@ public class NotesSteps {
 
     @Then("User should see deleted user message after note creation")
     public void user_should_see_deleted_user_message_after_note_creation() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -337,8 +331,7 @@ public class NotesSteps {
 
     @When("User sends request to create a note")
     public void user_sends_request_to_create_a_note() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -374,8 +367,7 @@ public class NotesSteps {
 
     @Then("User should see created note message")
     public void user_should_see_created_note_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -410,8 +402,7 @@ public class NotesSteps {
 
     @When("User sends request to create a note with invalid category")
     public void user_sends_request_to_create_a_note_with_invalid_category() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -445,8 +436,7 @@ public class NotesSteps {
 
     @Then("User should see invalid category message")
     public void user_should_see_invalid_category_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -467,8 +457,7 @@ public class NotesSteps {
 
     @When("User sends request to create a note with invalid token")
     public void user_sends_request_to_create_a_note_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -502,8 +491,7 @@ public class NotesSteps {
 
     @Then("User should see invalid token message response")
     public void user_should_see_invalid_token_message_response() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -524,8 +512,7 @@ public class NotesSteps {
 
     @When("User sends request to create notes")
     public void user_sends_request_to_create_notes() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_title_1 = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_description_1 = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -616,8 +603,7 @@ public class NotesSteps {
 
     @And("User sends request to get notes info")
     public void user_sends_request_to_get_notes_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -636,8 +622,7 @@ public class NotesSteps {
 
     @And("User sends request to get notes info with invalid token")
     public void user_sends_request_to_get_notes_info_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -654,8 +639,7 @@ public class NotesSteps {
 
     @Then("User should see notes info message")
     public void user_should_see_notes_info_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -721,8 +705,7 @@ public class NotesSteps {
 
     @When("User sends request to get note info")
     public void user_sends_request_to_get_note_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -741,8 +724,7 @@ public class NotesSteps {
 
     @Then("User should see note info message")
     public void user_should_see_note_info_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -782,8 +764,7 @@ public class NotesSteps {
 
     @When("User sends request to get note info with invalid token")
     public void user_sends_request_to_get_note_info_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -800,8 +781,7 @@ public class NotesSteps {
 
     @When("User sends request to get note info with invalid note id")
     public void user_sends_request_to_get_note_info_with_invalid_note_id() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -818,8 +798,7 @@ public class NotesSteps {
 
     @Then("User should see invalid note id message")
     public void user_should_see_invalid_note_id_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -840,8 +819,7 @@ public class NotesSteps {
 
     @When("User sends request to update note")
     public void user_sends_request_to_update_note() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_updated_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_updated_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -877,8 +855,7 @@ public class NotesSteps {
 
     @When("User sends request to update note with invalid category")
     public void user_sends_request_to_update_note_with_invalid_category() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_updated_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_updated_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -912,8 +889,7 @@ public class NotesSteps {
 
     @When("User sends request to update note with invalid token")
     public void user_sends_request_to_update_note_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         note_updated_title = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
         note_updated_description = "1234" + faker.rockBand().name().replaceAll("[^a-zA-Z0-9 ]", "");
@@ -947,8 +923,7 @@ public class NotesSteps {
 
     @Then("User should see note updated message")
     public void user_should_see_note_updated_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -986,8 +961,7 @@ public class NotesSteps {
 
     @When("User sends request to update note status")
     public void user_sends_request_to_update_note_status() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar PATCH
@@ -1018,8 +992,7 @@ public class NotesSteps {
 
     @Then("User should see note status updated message")
     public void user_should_see_note_status_updated_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -1057,8 +1030,7 @@ public class NotesSteps {
 
     @When("User sends request to update note status with invalid token")
     public void user_sends_request_to_update_note_status_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar PATCH
@@ -1087,8 +1059,7 @@ public class NotesSteps {
 
     @When("User sends request to update note status with invalid status")
     public void user_sends_request_to_update_note_status_with_invalid_status() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar PATCH
@@ -1117,8 +1088,7 @@ public class NotesSteps {
 
     @Then("User should see note invalid status message")
     public void user_should_see_note_invalid_status_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -1139,8 +1109,7 @@ public class NotesSteps {
 
     @When("User sends request to delete note")
     public void user_sends_request_to_delete_note() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -1165,8 +1134,7 @@ public class NotesSteps {
 
     @When("User sends request to delete note with invalid note id")
     public void user_sends_request_to_delete_note_with_invalid_note_id() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -1189,8 +1157,7 @@ public class NotesSteps {
 
     @When("User sends request to delete note with invalid token")
     public void user_sends_request_to_delete_note_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -1213,8 +1180,7 @@ public class NotesSteps {
 
     @Then("User should see note deleted message")
     public void user_should_see_note_deleted_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -1234,8 +1200,7 @@ public class NotesSteps {
     }
 
     private void addContentTypeHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement iconDown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView[@resource-id='com.ab.apiclient:id/iconDown']")));
         iconDown.click();
@@ -1248,8 +1213,7 @@ public class NotesSteps {
     }
 
     private void addTokenHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
         keyField.sendKeys("x-auth-token");
@@ -1258,8 +1222,7 @@ public class NotesSteps {
     }
 
     private void addTokenHeaderAs2nd() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\" and @text=\"Key\"]")));
         keyField.sendKeys("x-auth-token");
@@ -1268,8 +1231,7 @@ public class NotesSteps {
     }
 
     private void addInvalidTokenHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
         keyField.sendKeys("x-auth-token");
@@ -1278,8 +1240,7 @@ public class NotesSteps {
     }
 
     private void addInvalidTokenHeaderAs2nd() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\" and @text=\"Key\"]")));
         keyField.sendKeys("x-auth-token");

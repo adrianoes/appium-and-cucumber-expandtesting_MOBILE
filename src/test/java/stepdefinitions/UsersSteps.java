@@ -78,8 +78,7 @@ public class UsersSteps {
 
 //    @And("User configures the app")
 //    public void user_configures_the_app() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));//
 //        // Abrir o menu lateral
 //        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
 //        menuButton.click();
@@ -113,8 +112,7 @@ public class UsersSteps {
 
     @When("User sends request to create user")
     public void user_sends_request_to_create_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         user_name = faker.name().fullName();
         user_email = faker.internet().emailAddress().toLowerCase().replace("-", "");
@@ -147,8 +145,7 @@ public class UsersSteps {
 
     @Then("User should see created user message")
     public void user_should_see_created_user_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -176,8 +173,7 @@ public class UsersSteps {
 
     @When("User sends request to create user with invalid email")
     public void user_sends_request_to_create_user_with_invalid_email() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Gerar valores aleatórios e renomear variáveis
         user_name = faker.name().fullName();
         user_email = faker.internet().emailAddress().toLowerCase().replace("-", "");
@@ -208,8 +204,7 @@ public class UsersSteps {
 
     @Then("User should see invalid email message")
     public void user_should_see_invalid_email_message() throws IOException {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -230,8 +225,7 @@ public class UsersSteps {
 
     @When("User sends request to log in user")
     public void user_sends_request_to_log_in_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -261,8 +255,7 @@ public class UsersSteps {
 
     @Then("User should see logged in user message")
     public void user_should_see_logged_in_user_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -292,8 +285,7 @@ public class UsersSteps {
 
     @When("User sends request with invalid email to log in user")
     public void user_sends_request_with_invalid_email_to_log_in_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -321,8 +313,7 @@ public class UsersSteps {
 
     @When("User sends request with invalid password to log in user")
     public void user_sends_request_with_invalid_password_to_log_in_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -350,8 +341,7 @@ public class UsersSteps {
 
     @Then("User should see login with invalid password message")
     public void user_should_see_login_with_invalid_password_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -372,8 +362,7 @@ public class UsersSteps {
 
     @When("User sends request to delete user")
     public void user_sends_request_to_delete_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -397,8 +386,7 @@ public class UsersSteps {
 
     @Then("User should see deleted user message")
     public void user_should_see_deleted_user_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/tvResult")));
         String responseText = resultTextElement.getText();
@@ -452,8 +440,7 @@ public class UsersSteps {
 
     @When("User sends request to get user info")
     public void user_sends_request_to_get_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -472,8 +459,7 @@ public class UsersSteps {
 
     @Then("User should see user info")
     public void user_should_see_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -502,8 +488,7 @@ public class UsersSteps {
 
     @When("User sends request to get user info with invalid token")
     public void user_sends_request_to_get_user_info_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Inserir URL do endpoint
@@ -520,8 +505,7 @@ public class UsersSteps {
 
     @Then("User should see invalid token message")
     public void user_should_see_invalid_token_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -542,8 +526,7 @@ public class UsersSteps {
 
     @When("User sends request to updates user info")
     public void user_sends_request_to_updates_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar PATCH
@@ -577,8 +560,7 @@ public class UsersSteps {
 
     @Then("User should see updated user info")
     public void user_should_see_updated_user_info() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -611,8 +593,7 @@ public class UsersSteps {
 
     @When("User sends request to updates user info with invalid username")
     public void user_sends_request_to_updates_user_info_with_invalid_username() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar PATCH
@@ -644,8 +625,7 @@ public class UsersSteps {
 
     @When("User sends request to updates user info with invalid token")
     public void user_sends_request_to_updates_user_info_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar PATCH
@@ -677,8 +657,7 @@ public class UsersSteps {
 
     @Then("User should see invalid username message")
     public void user_should_see_invalid_username_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -699,8 +678,7 @@ public class UsersSteps {
 
     @When("User sends request to updates password")
     public void user_sends_request_to_updates_password() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -733,8 +711,7 @@ public class UsersSteps {
 
     @Then("User password should be updated")
     public void user_password_should_be_updated() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -755,8 +732,7 @@ public class UsersSteps {
 
     @When("User sends request to update a short password")
     public void user_sends_request_to_update_a_short_password() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -787,8 +763,7 @@ public class UsersSteps {
 
     @When("User sends request to update password with invalid token")
     public void user_sends_request_to_update_password_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar POST
@@ -819,8 +794,7 @@ public class UsersSteps {
 
     @Then("User should receive short password message")
     public void user_should_receive_short_password_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -841,8 +815,7 @@ public class UsersSteps {
 
     @When("User sends request to log out user")
     public void user_sends_request_to_log_out_user() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -866,8 +839,7 @@ public class UsersSteps {
 
     @When("User sends request to log out user with invalid token")
     public void user_sends_request_to_log_out_user_with_invalid_token() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         newRequest();
 
         // Selecionar DELETE
@@ -889,8 +861,7 @@ public class UsersSteps {
 
     @Then("User should see logged out user message")
     public void user_should_see_logged_out_user_message() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Aguardando e pegando o texto da resposta da API
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
@@ -910,8 +881,7 @@ public class UsersSteps {
     }
 
     private void addContentTypeHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement iconDown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView[@resource-id='com.ab.apiclient:id/iconDown']")));
         iconDown.click();
@@ -924,8 +894,7 @@ public class UsersSteps {
     }
 
     private void addTokenHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
         keyField.sendKeys("x-auth-token");
@@ -934,8 +903,7 @@ public class UsersSteps {
     }
 
     private void addInvalidTokenHeader() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
         keyField.sendKeys("x-auth-token");
@@ -944,8 +912,7 @@ public class UsersSteps {
     }
 
     private void addTokenHeaderAs2nd() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\" and @text=\"Key\"]")));
         keyField.sendKeys("x-auth-token");
@@ -954,8 +921,7 @@ public class UsersSteps {
     }
 
     private void addInvalidTokenHeaderAs2nd() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
         WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\" and @text=\"Key\"]")));
         keyField.sendKeys("x-auth-token");

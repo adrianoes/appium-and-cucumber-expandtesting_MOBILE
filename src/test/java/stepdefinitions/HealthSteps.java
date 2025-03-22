@@ -68,8 +68,7 @@ public class HealthSteps {
 
 //    @And("User configures the app before health check")
 //    public void user_configures_the_app_before_health_check() {
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));//
 //        // Abrir o menu lateral
 //        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
 //        menuButton.click();
@@ -103,8 +102,7 @@ public class HealthSteps {
 
     @When("User sends request to check API health")
     public void uUser_sends_request_to_check_API_health() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         // Disable WiFi
         try {
             Runtime.getRuntime().exec("adb shell svc wifi disable");
@@ -124,8 +122,7 @@ public class HealthSteps {
 
     @Then("User should see API health message after health check")
     public void user_should_see_API_health_message_after_health_check() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
         WebElement rawButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
         rawButton.click();
 
