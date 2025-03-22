@@ -1,5 +1,6 @@
 Feature: Notes Management
 
+  @notes
   Scenario: Note is created
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -13,6 +14,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note creation attempt with invalid category
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -26,6 +28,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note creation attempt with invalid token
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -39,6 +42,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes
   Scenario: Notes info are retrieved
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -53,6 +57,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Notes info are attempted to be retrieved with invalid token
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -67,6 +72,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes
   Scenario: Note info is retrieved
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -82,6 +88,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note info attempt to be retrieved with invalid id
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -97,6 +104,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note
 
+  @notes @negative
   Scenario: Note info attempt to be retrieved with invalid token
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -112,6 +120,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes
   Scenario: Note is updated
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -127,6 +136,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note is attempted to be updated with invalid category
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -142,6 +152,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note is attempted to be updated with invalid token
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -157,6 +168,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes
   Scenario: Note status is updated
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -172,6 +184,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note status is attempted to be updated with invalid status
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -187,6 +200,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note status is attempted to be updated with invalid token
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -202,6 +216,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes
   Scenario: Note is deleted
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -217,6 +232,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note is attempted to be deleted with invalid note id
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -232,6 +248,7 @@ Feature: Notes Management
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
 
+  @notes @negative
   Scenario: Note is attempted to be deleted with invalid token
     Given User opens the app before note creation
 #    And User configures the app before note creation
@@ -246,4 +263,5 @@ Feature: Notes Management
     When User sends request to delete user after note creation
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
+
 

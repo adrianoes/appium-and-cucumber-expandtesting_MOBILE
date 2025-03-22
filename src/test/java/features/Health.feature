@@ -1,5 +1,6 @@
 Feature: API Client - Health Check
 
+  @health
   Scenario: Validate API health check functionality
     Given User opens the app before health check
 #    And User configures the app before health check

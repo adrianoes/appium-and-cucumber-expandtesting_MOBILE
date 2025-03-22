@@ -177,6 +177,7 @@ Hit :point_right: **Create**.
 # Tests:
 
 - Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_UI) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
+- Go to TestRunner file (e.g. C:\Users\adria\IdeaProjects\appium-and-cucumber-expandtesting_UI\src\test\java\runner\TestRunner.java) and select a tag combination related to desired tests. Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_UI) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
 - Open command prompt in the pom.xml directory and Execute ```mvn clean test -Dcucumber.filter.name="Notes info are retrieved"``` to run Notes info are retrieved test. 
 - Hit :point_right:**Testing** button on left side bar in IntelliJ and choose the tests to execute.
 
@@ -194,6 +195,8 @@ Hit :point_right: **Create**.
 - [Automate Mobile Gestures in Appium: A Detailed Guide for Developers](https://www.headspin.io/blog/automating-mobile-gestures-with-appium)
 - [Package com.github.javafaker](https://javadoc.io/static/com.github.javafaker/javafaker/1.0.2/com/github/javafaker/package-summary.html)
 - [ChatGPT](https://chatgpt.com/)
+- [Tag Expressions](https://github.com/cucumber/tag-expressions)
+- [10-minute tutorial](https://cucumber.io/docs/guides/10-minute-tutorial)
 
 # Tips:
 
