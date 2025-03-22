@@ -488,7 +488,7 @@ public class NotesSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addinvalidTokenHeaderAs2nd();
+        addInvalidTokenHeaderAs2nd();
 
         //fill form in raw code
         WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
@@ -645,7 +645,7 @@ public class NotesSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes");
 
         // Adicionar cabeçalho
-        addinvalidTokenHeader();
+        addInvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
@@ -791,7 +791,7 @@ public class NotesSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + note_id );
 
         // Adicionar cabeçalho
-        addinvalidTokenHeader();
+        addInvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
@@ -933,7 +933,7 @@ public class NotesSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addinvalidTokenHeaderAs2nd();
+        addInvalidTokenHeaderAs2nd();
 
         //fill form in raw code
         WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
@@ -1073,11 +1073,11 @@ public class NotesSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addTokenHeaderAs2nd();
+        addInvalidTokenHeaderAs2nd();
 
         //fill form in raw code
         WebElement jsonDataField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etJSONData")));
-        String formData = "completed=a";
+        String formData = "completed=true";
         jsonDataField.sendKeys(formData);
 
         // Enviar requisição
@@ -1204,7 +1204,7 @@ public class NotesSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/notes/" + "@"+note_id );
 
         // Adicionar cabeçalho
-        addinvalidTokenHeader();
+        addInvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
@@ -1267,7 +1267,7 @@ public class NotesSteps {
         valueField.sendKeys(user_token);
     }
 
-    private void addinvalidTokenHeader() {
+    private void addInvalidTokenHeader() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
@@ -1277,7 +1277,7 @@ public class NotesSteps {
         valueField.sendKeys("@"+user_token);
     }
 
-    private void addinvalidTokenHeaderAs2nd() {
+    private void addInvalidTokenHeaderAs2nd() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
@@ -1301,11 +1301,12 @@ public class NotesSteps {
 
     public void newRequest() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")));
+        WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")));
         menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
+        WebElement newRequestButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
         newRequestButton.click();
     }
+
 
 }
 

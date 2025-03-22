@@ -511,7 +511,7 @@ public class UsersSteps {
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/profile");
 
         // Adicionar cabeçalho
-        addinvalidTokenHeader();
+        addInvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
@@ -660,7 +660,7 @@ public class UsersSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addinvalidTokenHeaderAs2nd();
+        addInvalidTokenHeaderAs2nd();
 
         user_phone = faker.regexify("[0-9]{10,12}");
         user_company = faker.regexify("[A-Za-z0-9]{5,15}");
@@ -803,7 +803,7 @@ public class UsersSteps {
 
         // Adicionar cabeçalho
         addContentTypeHeader();
-        addinvalidTokenHeaderAs2nd();
+        addInvalidTokenHeaderAs2nd();
 
         user_new_password = faker.regexify("[A-Za-z0-9]{12,20}");
 
@@ -880,7 +880,7 @@ public class UsersSteps {
         WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/etUrl")));
         urlField.sendKeys("https://practice.expandtesting.com/notes/api/users/logout");
 
-        addinvalidTokenHeader();
+        addInvalidTokenHeader();
 
         // Enviar requisição
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
@@ -933,7 +933,7 @@ public class UsersSteps {
         valueField.sendKeys(user_token);
     }
 
-    private void addinvalidTokenHeader() {
+    private void addInvalidTokenHeader() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
         imageView.click();
@@ -953,7 +953,7 @@ public class UsersSteps {
         valueField.sendKeys(user_token);
     }
 
-    private void addinvalidTokenHeaderAs2nd() {
+    private void addInvalidTokenHeaderAs2nd() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
         imageView.click();
@@ -977,9 +977,9 @@ public class UsersSteps {
 
     public void newRequest() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")));
+        WebElement menuButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")));
         menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
+        WebElement newRequestButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
         newRequestButton.click();
     }
 
