@@ -163,7 +163,7 @@ Feature: Notes Management
     When User sends request to create a note
     Then User should see created note message
     When User sends request to update note with invalid token
-    Then User should see invalid token message
+    Then User should see invalid token message response
     When User sends request to delete user after note creation
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
@@ -211,7 +211,7 @@ Feature: Notes Management
     When User sends request to create a note
     Then User should see created note message
     When User sends request to update note status with invalid token
-    Then User should see invalid token message
+    Then User should see invalid token message response
     When User sends request to delete user after note creation
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
@@ -259,7 +259,7 @@ Feature: Notes Management
     When User sends request to create a note
     Then User should see created note message
     When User sends request to delete note with invalid token
-    Then User should see invalid token message
+    Then User should see invalid token message response
     When User sends request to delete user after note creation
     Then User should see deleted user message after note creation
 #    And App is closed after note creation
