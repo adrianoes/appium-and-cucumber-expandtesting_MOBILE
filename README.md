@@ -198,8 +198,5 @@ Hit :point_right: **Create**.
 # Tips:
 
 - When needed, open pom.xml directory and execute ```mvn clean install```. It removes previous build files to ensure a clean environment, while compiles the source code and runs tests to compile the automation again. 
-- Make sure to have all same number versions for Cucumber JVM: Java, Cucumber JVM: Core and Cucumber JVM: JUnit 4 Maven repositories.     
-- If an element is defined and used in some screen, the screen is changed, the screen is chaged back and the previous element is required, then it is needed to define it again with another name. Otherwise, a message telling that the element is not present in the DOM anymore will be presented.
-- It was experienced in this project that Java reacts better by calling support functions from same test file than additional ones. 
-- It seems that closing the app task is done by a deeper code from the one cucumber can reach, so instead of doing it direct in the feature file, an @after code block was implemented to do it.
+- Make sure to have all same number versions for Cucumber JVM: Java, Cucumber JVM: Core and Cucumber JVM: JUnit 4 Maven dependencies.     
 - Error messages were filtered to look only the ones related to the apk activities. Remove the filter in the @given methods to get a complete error log.

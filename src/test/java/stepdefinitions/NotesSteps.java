@@ -877,6 +877,26 @@ public class NotesSteps {
         valueField.sendKeys(user_token);
     }
 
+    private void addWrongTokenHeader() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.ImageView")));
+        imageView.click();
+        WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\"]")));
+        keyField.sendKeys("x-auth-token");
+        WebElement valueField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etValue\"]")));
+        valueField.sendKeys("@"+user_token);
+    }
+
+    private void addWrongTokenHeaderAs2nd() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebElement imageView = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.LinearLayout[@resource-id=\"com.ab.apiclient:id/llAddHeader\"]/android.widget.ImageView")));
+        imageView.click();
+        WebElement keyField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etKey\" and @text=\"Key\"]")));
+        keyField.sendKeys("x-auth-token");
+        WebElement valueField = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.EditText[@resource-id=\"com.ab.apiclient:id/etValue\" and @text=\"Value\"]")));
+        valueField.sendKeys("@"+user_token);
+    }
+
 //    public void scrollDown(WebDriver driver) {
 //        boolean canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript("mobile: scrollGesture",
 //                ImmutableMap.of(
