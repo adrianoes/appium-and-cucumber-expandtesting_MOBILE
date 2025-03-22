@@ -400,7 +400,7 @@ public class UsersSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
         // Aguardando e pegando o texto da resposta da API
-        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
+        WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/tvResult")));
         String responseText = resultTextElement.getText();
 
         // Criando o objeto JSONObject para parsear o JSON da resposta
@@ -977,9 +977,9 @@ public class UsersSteps {
 
     public void newRequest() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.ImageButton")));
+        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")));
         menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/drawer_menu_new_request")));
+        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
         newRequestButton.click();
     }
 
