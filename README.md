@@ -197,6 +197,8 @@ Hit :point_right: **Create**.
 - [ChatGPT](https://chatgpt.com/)
 - [Tag Expressions](https://github.com/cucumber/tag-expressions)
 - [10-minute tutorial](https://cucumber.io/docs/guides/10-minute-tutorial)
+- [Expected condition failed: waiting for element to be clickable in Selenium](https://stackoverflow.com/a/57069767)
+- [org.openqa.selenium.TimeoutException: Expected condition failed: waiting for all conditions to be valid](https://stackoverflow.com/a/62832984)
 
 # Tips:
 

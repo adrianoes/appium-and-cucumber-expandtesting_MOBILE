@@ -138,7 +138,8 @@ public class NotesSteps {
         user_password = faker.regexify("[A-Za-z0-9]{12,20}");
 
         // Selecionar POST
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption.click();
@@ -197,7 +198,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar POST
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption.click();
@@ -257,7 +259,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar DELETE
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
         deleteOption.click();
@@ -340,7 +343,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar POST
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption.click();
@@ -411,7 +415,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar POST
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption.click();
@@ -466,7 +471,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar POST
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption.click();
@@ -525,7 +531,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar POST
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement postOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption.click();
@@ -564,7 +571,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar POST
-        WebElement httpMethodDropdown2 = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown2 = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown2.click();
         WebElement postOption2 = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='POST']")));
         postOption2.click();
@@ -828,7 +836,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar PUT
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement putOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PUT']")));
         putOption.click();
@@ -864,7 +873,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar PUT
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement putOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PUT']")));
         putOption.click();
@@ -898,7 +908,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar PUT
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement putOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PUT']")));
         putOption.click();
@@ -965,7 +976,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar PATCH
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement patchOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PATCH']")));
         patchOption.click();
@@ -1034,7 +1046,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar PATCH
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement patchOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PATCH']")));
         patchOption.click();
@@ -1063,7 +1076,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar PATCH
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement patchOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='PATCH']")));
         patchOption.click();
@@ -1113,7 +1127,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar DELETE
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
         deleteOption.click();
@@ -1138,7 +1153,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar DELETE
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
         deleteOption.click();
@@ -1161,7 +1177,8 @@ public class NotesSteps {
         newRequest();
 
         // Selecionar DELETE
-        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.className("android.widget.Spinner")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
+        WebElement httpMethodDropdown = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/spHttpMethod")));
         httpMethodDropdown.click();
         WebElement deleteOption = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.xpath("//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='DELETE']")));
         deleteOption.click();
@@ -1262,12 +1279,28 @@ public class NotesSteps {
 
     public void newRequest() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
-        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")));
-        menuButton.click();
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")));
-        newRequestButton.click();
-    }
 
+        WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(
+                AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")
+        ));
+        menuButton.click();
+
+//        Thread.sleep(500); // Pequena pausa para garantir que o menu abriu completamente
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")
+        ));
+
+        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(
+                AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")
+        ));
+
+        if (newRequestButton.isDisplayed() && newRequestButton.isEnabled()) {
+            newRequestButton.click();
+        } else {
+            System.out.println("Botão não está clicável no momento.");
+        }
+    }
 
 }
 
