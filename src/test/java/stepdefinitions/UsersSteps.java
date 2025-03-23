@@ -4,12 +4,12 @@ import com.github.javafaker.Faker;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.json.JSONObject;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -965,26 +965,26 @@ public class UsersSteps {
     public void newRequest() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(180));
 
+        // Clica no botão de menu
         WebElement menuButton = wait.until(ExpectedConditions.elementToBeClickable(
                 AppiumBy.androidUIAutomator("new UiSelector().className(\"android.widget.ImageButton\")")
         ));
         menuButton.click();
 
-//        Thread.sleep(500); // Pequena pausa para garantir que o menu abriu completamente
+        // Aguarda um elemento do menu lateral para garantir que ele abriu
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id("com.ab.apiclient:id/drawerView")));
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
+        // Aguarda o botão "New Request" estar visível antes de clicar
+        WebElement newRequestButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")
         ));
 
-        WebElement newRequestButton = wait.until(ExpectedConditions.elementToBeClickable(
-                AppiumBy.androidUIAutomator("new UiSelector().text(\"New Request\")")
-        ));
+        // Garante que o botão está clicável
+        wait.until(ExpectedConditions.elementToBeClickable(newRequestButton));
 
-        if (newRequestButton.isDisplayed() && newRequestButton.isEnabled()) {
-            newRequestButton.click();
-        } else {
-            System.out.println("Botão não está clicável no momento.");
-        }
+        // Usando Actions para focar no botão e clicar
+        Actions actions = new Actions(driver);
+        actions.moveToElement(newRequestButton).click().perform();
     }
 
 }
