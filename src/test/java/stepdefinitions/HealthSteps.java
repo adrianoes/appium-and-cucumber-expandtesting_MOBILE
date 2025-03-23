@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.json.JSONObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -103,13 +104,6 @@ public class HealthSteps {
     @When("User sends request to check API health")
     public void uUser_sends_request_to_check_API_health() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-        // Disable WiFi
-        try {
-            Runtime.getRuntime().exec("adb shell svc wifi disable");
-            Thread.sleep(5000);
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to disable WiFi", e);
-        }
 
         // Input base URL and endpoint
         WebElement urlField = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/etUrl\")")));
@@ -118,35 +112,30 @@ public class HealthSteps {
         // Click Send Request button
         WebElement sendButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.id("com.ab.apiclient:id/btnSend")));
         sendButton.click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
+        WebElement rawButton = wait.until(ExpectedConditions.elementToBeClickable(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
+        rawButton.click();
     }
 
     @Then("User should see API health message after health check")
     public void user_should_see_API_health_message_after_health_check() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
-        WebElement rawButton = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().text(\"Raw\")")));
-        rawButton.click();
 
         WebElement resultTextElement = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"com.ab.apiclient:id/tvResult\")")));
         String responseText = resultTextElement.getText();
 
-        // Use Jackson to parse the JSON response
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode responseJson = objectMapper.readTree(responseText);
+        // Criando o objeto JSONObject para parsear o JSON da resposta
+        JSONObject responseJson = new JSONObject(responseText);
 
-            // Extract values from the JSON response
-            boolean success = responseJson.path("success").asBoolean();
-            int status = responseJson.path("status").asInt();
-            String message = responseJson.path("message").asText();
+        // Extract values from the JSON response
+        boolean success = responseJson.getBoolean("success");
+        int status = responseJson.getInt("status");
+        String message = responseJson.getString("message");
 
-            // Validate the extracted values
-            assertTrue("Response should indicate success", success);
-            assertEquals("Response should have status 200", 200, status);
-            assertEquals("Response should confirm API is running", "Notes API is Running", message);
-
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to parse JSON response", e);
-        }
+        // Validate the extracted values
+        assertTrue("Response should indicate success", success);
+        assertEquals("Response should have status 200", 200, status);
+        assertEquals("Response should confirm API is running", "Notes API is Running", message);
     }
 
 //    @And("App is closed after health check")
