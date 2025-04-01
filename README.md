@@ -1,4 +1,4 @@
-# appium-and-cucumber-expandtesting_UI
+# appium-and-cucumber-expandtesting_MOBILE
 
 UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting.com/notes/app/). This project contains basic examples on how to use Appium, Cucumber, Java and Gherkin to test UI tests. Good practices such as hooks, custom commands and tags, among others, are used. All the necessary support documentation to develop this project is placed here.
 
@@ -72,7 +72,7 @@ UI testing in ApiClient apk using [expandtesting](https://practice.expandtesting
     "appium:platformVersion": "10.0",
     "appium:deviceName": "Android SDK built for x86",
     "appium:automationName": "UIAutomator2",
-    "appium:app": "C:\\Users\\<user_name>\\IdeaProjects\\appium-and-cucumber-expandtesting_UI\\apks\\apiClient.apk",
+    "appium:app": "C:\\Users\\<user_name>\\IdeaProjects\\appium-and-cucumber-expandtesting_MOBILE\\apks\\apiClient.apk",
     "appium:adbExecTimeout": 120000,
     "appium:autoGrantPermissions": true,
     "appium:appPackage": "com.ab.apiclient",
@@ -176,8 +176,8 @@ Hit :point_right: **Create**.
 
 # Tests:
 
-- Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_UI) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
-- Go to TestRunner file (e.g. C:\Users\adria\IdeaProjects\appium-and-cucumber-expandtesting_UI\src\test\java\runner\TestRunner.java) and select a tag combination related to desired tests. Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_UI) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
+- Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_MOBILE) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
+- Go to TestRunner file (e.g. C:\Users\adria\IdeaProjects\appium-and-cucumber-expandtesting_MOBILE\src\test\java\runner\TestRunner.java) and select a tag combination related to desired tests. Open command prompt in the pom.xml directory (e.g. C:\Users\<user_name>\IdeaProjects\appium-and-cucumber-expandtesting_MOBILE) and Execute ```mvn clean install``` to run all to removes previous build files while compiles the source code an execute the tests.
 - Open command prompt in the pom.xml directory and Execute ```mvn clean test -Dcucumber.filter.name="Notes info are retrieved"``` to run Notes info are retrieved test. 
 - Hit :point_right:**Testing** button on left side bar in IntelliJ and choose the tests to execute.
 
